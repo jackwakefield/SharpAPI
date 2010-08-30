@@ -20,8 +20,8 @@
 using System;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
-using SharpAPI.Interface.Plugin.Attributes;
 using SharpAPI.Plugin;
+using SharpAPI.Plugin.Attributes;
 
 namespace SharpAPI
 {
@@ -38,12 +38,12 @@ namespace SharpAPI
 
         #endregion
 
-        #region Constructor
+        #region IPlugin Methods
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="Console"/> class.
+        /// Initializes the plugin.
         /// </summary>
-        public Console()
+        public void Initialize()
         {
             ScriptRuntimeSetup runtimeSetup = Python.CreateRuntimeSetup(null);
             runtimeSetup.DebugMode = true;
@@ -52,18 +52,6 @@ namespace SharpAPI
             scriptEngine = Python.GetEngine(scriptRuntime);
             scriptScope = scriptEngine.CreateScope();
             scriptRuntime.LoadAssembly(scriptRuntime.Host.PlatformAdaptationLayer.LoadAssembly("mscorlib"));
-        }
-
-        #endregion
-
-        #region IPlugin Methods
-
-        /// <summary>
-        /// Initializes the plugin.
-        /// </summary>
-        public void Initialize()
-        {
-            throw new NotImplementedException();
         }
 
         #endregion

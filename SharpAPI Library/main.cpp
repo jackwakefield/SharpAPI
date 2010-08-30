@@ -18,19 +18,50 @@
  */
 
 #include "main.h"
-#include "HookList.h"
+
+DWORD gManagedThread;
+
+#pragma managed
+using namespace System;
+using namespace System::IO;
+using namespace System::Collections::Generic;
+
+DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
+	array<String^>^ dllFiles = Directory::GetFiles("Plugins", "*.dll");
+
+	for(int i = 0; i < dllFiles->Length; i++){
+		PluginManager::Add(dllFiles[i]);
+	}
+
+	for(int i = 0; i < PluginManager::mPlugins.Count; i++){
+		PluginManager::mPlugins[i]->Run();
+	}
+
+	return 0;
+}
+
+#pragma unmanaged
 
 BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
 	switch(dwReason){
 		case DLL_PROCESS_ATTACH:
 			{
 #ifdef ENABLE_CONSOLE
-				CreateConsole();
+				::CreateConsole();
 #endif
-				HookList::Apply();
+				RunList::Instance().RunFunctions();
+				HookList::Instance().ApplyHooks();
+				WriteList::Instance().ApplyWrites();
+
+				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
+			}
+			break;
+		case DLL_PROCESS_DETACH:
+			{
+				ExitThread(gManagedThread);
 			}
 			break;
 	}
-
+	
 	return true;
 }

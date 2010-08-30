@@ -19,9 +19,20 @@
 
 #include <Windows.h>
 
+#define SERVER_ARUA
+//#define SERVER_TITAN
+
 int APIENTRY WinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPSTR lpCmdLine, int nCmdShow){
 	STARTUPINFO startupInfo = { sizeof( startupInfo ) };
 	PROCESS_INFORMATION processInfo;
+
+#ifdef SERVER_ARUA
+	char* commandLine = "trose.exe @TRIGGER_SOFT@ _server login.aruarose.com _RCODE_JP_HG";
+#elif defined SERVER_TITAN
+	char* commandLine = "TRose.exe @TRIGGER_SOFT@ _server 127.0.0.1";
+#else
+	char* commandLine = "TRose.exe @TRIGGER_SOFT@ _server 127.0.0.1";
+#endif
 
 	if(!CreateProcessA(NULL, "TRose.exe @TRIGGER_SOFT@ _server 127.0.0.1", NULL, NULL, FALSE, NULL, NULL, NULL, &startupInfo, &processInfo)){
 		MessageBoxA(NULL, "Failed to start TRose", "Error", MB_ICONERROR);
@@ -29,7 +40,6 @@ int APIENTRY WinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPSTR lpCmdL
 	}
 	
 	char* dllName = "SharpAPI.dll";
-
 	LPVOID stringLocation = VirtualAllocEx(processInfo.hProcess, 0, strlen(dllName) + 1, MEM_COMMIT | MEM_RESERVE, PAGE_READWRITE);
 	if(!stringLocation){
 		MessageBoxA(NULL, "Failed to allocate memory", "Error", MB_ICONERROR);
@@ -42,7 +52,7 @@ int APIENTRY WinMain(HINSTANCE hInstance,  HINSTANCE hPrevInstance, LPSTR lpCmdL
 		MessageBoxA(NULL, "Failed to write to process memory", "Error", MB_ICONERROR);
 		return 0;
 	}
-
+	
 	if(!CreateRemoteThread(processInfo.hProcess, 0, 0, (LPTHREAD_START_ROUTINE)GetProcAddress(GetModuleHandleA("kernel32.dll"), "LoadLibraryA"), stringLocation, 0, 0)){
 		MessageBoxA(NULL, "Failed to create remote thread", "Error", MB_ICONERROR);
 	}

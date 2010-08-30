@@ -19,7 +19,7 @@
 
 using System;
 
-namespace SharpAPI.Interface.Plugin.Attributes
+namespace SharpAPI.Plugin.Attributes
 {
     /// <summary>
     /// Used to define the plugin author for classes inheriting IPlugin

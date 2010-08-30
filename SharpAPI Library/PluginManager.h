@@ -17,19 +17,21 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAIN_H
-#define MAIN_H
-#define WIN32_LEAN_AND_MEAN
+#ifndef PLUGINMANAGER_H
+#define PLUGINMANAGER_H
 
-#ifdef _DEBUG
-#define ENABLE_CONSOLE
-#endif
-
+#include "main.h"
 #pragma managed
-#include "PluginManager.h"
+#include "Plugin.h"
+using namespace System;
+using namespace System::Collections::Generic;
 
-#pragma unmanaged
-#include "Console.h"
-#include "HookList.h"
+public ref class PluginManager {
+public:
+	static void Add(String^ filePath);
+
+public:
+	static List<Plugin^> mPlugins;
+};
 
 #endif

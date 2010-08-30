@@ -17,19 +17,13 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef MAIN_H
-#define MAIN_H
-#define WIN32_LEAN_AND_MEAN
-
-#ifdef _DEBUG
-#define ENABLE_CONSOLE
-#endif
-
-#pragma managed
 #include "PluginManager.h"
+using namespace System::IO;
 
-#pragma unmanaged
-#include "Console.h"
-#include "HookList.h"
+void PluginManager::Add(String^ filePath){
+	Plugin^ plugin = gcnew Plugin();
 
-#endif
+	if(plugin->Load(filePath)){
+		mPlugins.Add(plugin);
+	}
+}

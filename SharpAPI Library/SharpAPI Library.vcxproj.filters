@@ -16,8 +16,17 @@
     <Filter Include="Header Files\Helpers">
       <UniqueIdentifier>{b5daeb5d-d776-4f5b-b73a-d61a6219f05d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Helpers">
-      <UniqueIdentifier>{ab99e8e4-0c48-401c-b0f2-f32a270568ec}</UniqueIdentifier>
+    <Filter Include="Header Files\Engine">
+      <UniqueIdentifier>{bc0c24a0-2a12-45ad-8e1a-227130f0cd0c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Engine">
+      <UniqueIdentifier>{b094218f-e275-4d9a-8840-d4e951e79016}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Plugin">
+      <UniqueIdentifier>{2c5fdce2-167a-4a01-8c57-b9c7b5ca6fbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Plugin">
+      <UniqueIdentifier>{edc35565-3c4e-447f-adec-06e1444b8f71}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -27,8 +36,11 @@
     <ClCompile Include="HookList.h">
       <Filter>Header Files\Helpers</Filter>
     </ClCompile>
-    <ClCompile Include="HookList.cpp">
-      <Filter>Source Files\Helpers</Filter>
+    <ClCompile Include="PluginManager.cpp">
+      <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="Plugin.cpp">
+      <Filter>Source Files\Plugin</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -43,6 +55,12 @@
     </ClInclude>
     <ClInclude Include="Code.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="PluginManager.h">
+      <Filter>Header Files\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="Plugin.h">
+      <Filter>Header Files\Plugin</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
