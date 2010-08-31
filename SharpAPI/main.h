@@ -26,9 +26,12 @@
 #endif
 
 #pragma managed
+#include "SharpAPI.h"
 #include "PluginManager.h"
 
 #pragma unmanaged
+#include "CStrVAR.h"
+#include "VariableTypes.h"
 #include "Console.h"
 #include "HookList.h"
 

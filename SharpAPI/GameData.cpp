@@ -17,40 +17,21 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
-
-DWORD gManagedThread;
+#include "GameData.h"
 
 #pragma managed
 using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
+using namespace System::Runtime::InteropServices;
+using namespace SharpAPI::Internal;
 
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
-
-	return 0;
+void __stdcall DelegateGameDataMethods(){
+	ROSE::GameData::GetFont = (ROSE::GameData::GetFontDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GameData::GetFont, ROSE::GameData::GetFontDelegate::typeid);
 }
+
+RunOnLoad(DelegateGameDataMethods);
 
 #pragma unmanaged
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
-#endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
+HNODE GameData::GetFont(int index){
+	return GameData::Instance()->mFonts[index];
 }

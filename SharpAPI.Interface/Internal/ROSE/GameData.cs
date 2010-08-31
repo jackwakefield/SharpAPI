@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,40 +17,14 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
+using System;
 
-DWORD gManagedThread;
+namespace SharpAPI.Internal.ROSE
+{
+    internal static class GameData
+    {
+        internal delegate IntPtr GetFontDelegate(int index);
 
-#pragma managed
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
-
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
-
-	return 0;
-}
-
-#pragma unmanaged
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
-#endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
+        internal static GetFontDelegate GetFont;
+    }
 }

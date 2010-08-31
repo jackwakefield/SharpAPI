@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,40 +17,32 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
+using SharpAPI.ROSE.Events;
 
-DWORD gManagedThread;
+namespace SharpAPI.ROSE
+{
+    public static class Game
+    {
+        #region Events
 
-#pragma managed
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
+        /// <summary>
+        /// Occurs when a key has been pressed.
+        /// </summary>
+        public static event KeyboardEvent KeyDown
+        {
+            add { Internal.ROSE.Game.KeyDown += value; }
+            remove { Internal.ROSE.Game.KeyDown -= value; }
+        }
 
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
+        /// <summary>
+        /// Occurs when a key has been released.
+        /// </summary>
+        public static event KeyboardEvent KeyUp
+        {
+            add { Internal.ROSE.Game.KeyUp += value; }
+            remove { Internal.ROSE.Game.KeyUp -= value; }
+        }
 
-	return 0;
-}
-
-#pragma unmanaged
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
-#endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
+        #endregion
+    }
 }

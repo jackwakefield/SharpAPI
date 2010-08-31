@@ -17,16 +17,33 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Plugin
+using System;
+
+namespace SharpAPI.Engine
 {
-    /// <summary>
-    /// Interface used for managing plugins.
-    /// </summary>
-    public interface IPlugin
+    public static class Scene
     {
+        #region Events
+
         /// <summary>
-        /// Initializes the plugin.
+        /// Occurs when the engine calls renderScene.
         /// </summary>
-        void Initialize();
+        public static event EventHandler Render
+        {
+            add { Internal.Engine.Scene.Render += value; }
+            remove { Internal.Engine.Scene.Render -= value; }
+        }
+
+        /// <summary>
+        /// Occurs before the engine calls endScene.
+        /// Allows rendering on top of the user interface.
+        /// </summary>
+        public static event EventHandler RenderOverlay
+        {
+            add { Internal.Engine.Scene.RenderOverlay += value; }
+            remove { Internal.Engine.Scene.RenderOverlay -= value; }
+        }
+
+        #endregion
     }
 }

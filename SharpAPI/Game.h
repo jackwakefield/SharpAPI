@@ -17,40 +17,27 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
+#ifndef GAME_H
+#define GAME_H
 
-DWORD gManagedThread;
+enum eGAME_STATE{
+	GS_NULL,
+	GS_TITLE,
+	GS_LOGIN,
+	GS_WARNING,
+	GS_SELECTSVR,
+	GS_PREPARESELECTAVATAR,
+	GS_SELECTAVATAR,
+	GS_LOGINVIRTUAL,
+	GS_CREATEAVATAR,
+	GS_MOVEMAIN,
+	GS_PREPAREMAIN,
+	GS_MAIN,
+	GS_WARP,
+	GS_EXITMAIN,
+	GS_MOVEPLANET,
+	GS_RELOGIN,
+	GS_MAX
+};
 
-#pragma managed
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
-
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
-
-	return 0;
-}
-
-#pragma unmanaged
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
 #endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
-}

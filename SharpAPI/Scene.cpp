@@ -18,39 +18,42 @@
  */
 
 #include "main.h"
-
-DWORD gManagedThread;
+#include "Scene.h"
 
 #pragma managed
 using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
+using namespace SharpAPI::Internal::Engine;
 
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
+void __stdcall RaiseRenderScene(){
+	Scene::RaiseRenderEvent();
+}
 
-	return 0;
+void __stdcall RaiseRenderOverlay(){
+	Scene::RaiseRenderOverlayEvent();
 }
 
 #pragma unmanaged
 
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
-#endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
+__declspec(naked) void HookRenderScene(){
+	_asm {
+		PUSHAD
+		CALL RaiseRenderScene
+		POPAD
+		JMP DWORD PTR DS:[EDX+0x214]
+	};
 }
+
+HookOnLoad(0x680226CD, HookRenderScene, 1);
+
+__declspec(naked) void HookEndScene(){
+	static int ReturnAddress = 0x68022626;
+	_asm {
+		PUSHAD
+		CALL RaiseRenderOverlay
+		POPAD
+		MOV ECX, DWORD PTR DS:[0x6822E630]
+		JMP ReturnAddress
+	};
+}
+
+HookOnLoad(0x68022620, HookEndScene, 1);

@@ -56,12 +56,22 @@
       </PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;SHARPAPILIBRARY_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <AdditionalUsingDirectories>$(ROSEDIR);%(AdditionalUsingDirectories)</AdditionalUsingDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalLibraryDirectories>
+      </AdditionalLibraryDirectories>
+      <AdditionalDependencies>
+      </AdditionalDependencies>
     </Link>
+    <ProjectReference>
+      <LinkLibraryDependencies>true</LinkLibraryDependencies>
+    </ProjectReference>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
@@ -81,23 +91,27 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Game.cpp" />
+    <ClCompile Include="GameData.cpp" />
+    <ClCompile Include="Scene.cpp" />
     <ClCompile Include="HookList.h" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plugin.cpp" />
     <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="ZnZin.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Code.h" />
     <ClInclude Include="Console.h" />
+    <ClInclude Include="CStrVAR.h" />
+    <ClInclude Include="GameData.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="VariableTypes.h" />
     <ClInclude Include="Plugin.h" />
     <ClInclude Include="PluginManager.h" />
+    <ClInclude Include="Game.h" />
+    <ClInclude Include="SharpAPI.h" />
     <ClInclude Include="Templates.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SharpAPI.Interface\SharpAPI.Interface.csproj">
-      <Project>{de06c484-12fe-4a57-a7ba-26f492298cf3}</Project>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

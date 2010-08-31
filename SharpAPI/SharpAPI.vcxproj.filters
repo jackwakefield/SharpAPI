@@ -16,9 +16,6 @@
     <Filter Include="Header Files\Helpers">
       <UniqueIdentifier>{b5daeb5d-d776-4f5b-b73a-d61a6219f05d}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Engine">
-      <UniqueIdentifier>{bc0c24a0-2a12-45ad-8e1a-227130f0cd0c}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Engine">
       <UniqueIdentifier>{b094218f-e275-4d9a-8840-d4e951e79016}</UniqueIdentifier>
     </Filter>
@@ -27,6 +24,15 @@
     </Filter>
     <Filter Include="Source Files\Plugin">
       <UniqueIdentifier>{edc35565-3c4e-447f-adec-06e1444b8f71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ROSE">
+      <UniqueIdentifier>{759bd994-c480-49c6-80f9-09149634692e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ROSE">
+      <UniqueIdentifier>{be085a86-650c-43ed-95bf-551d5952d446}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\DataTypes">
+      <UniqueIdentifier>{ea3c55f8-cb59-488b-8a79-4841c0e48350}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -41,6 +47,18 @@
     </ClCompile>
     <ClCompile Include="Plugin.cpp">
       <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="Scene.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="ZnZin.cpp">
+      <Filter>Source Files\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\ROSE</Filter>
+    </ClCompile>
+    <ClCompile Include="GameData.cpp">
+      <Filter>Source Files\ROSE</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -61,6 +79,21 @@
     </ClInclude>
     <ClInclude Include="Plugin.h">
       <Filter>Header Files\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="SharpAPI.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="CStrVAR.h">
+      <Filter>Header Files\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="VariableTypes.h">
+      <Filter>Header Files\DataTypes</Filter>
+    </ClInclude>
+    <ClInclude Include="Game.h">
+      <Filter>Header Files\ROSE</Filter>
+    </ClInclude>
+    <ClInclude Include="GameData.h">
+      <Filter>Header Files\ROSE</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

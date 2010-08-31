@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,40 +17,29 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
+/// <summary>
+/// Defines a vector with three components.
+/// </summary>
+struct Vector3
+{
+    #region Constructor
 
-DWORD gManagedThread;
+    /// <summary>
+    /// Initializes a new instance of the <see cref="Vector3"/> struct.
+    /// </summary>
+    /// <param name="x">The x.</param>
+    /// <param name="y">The y.</param>
+    /// <param name="z">The z.</param>
+    public Vector3(float x, float y, float z = 0.0f)
+    {
+        X = x;
+        Y = y;
+        Z = z;
+    }
 
-#pragma managed
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
+    #endregion
 
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
-
-	return 0;
-}
-
-#pragma unmanaged
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
-#endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
-}
+    public float X;
+    public float Y;
+    public float Z;
+};

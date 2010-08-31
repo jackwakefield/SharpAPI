@@ -19,6 +19,7 @@
 
 using System.Reflection;
 using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 [assembly: AssemblyTitle("SharpAPI.Interface")]
 [assembly: AssemblyDescription("")]
@@ -31,3 +32,4 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 [assembly: Guid("49b04832-a83b-4e74-aba7-4135d9c9c837")]
 [assembly: AssemblyVersion("0.9.0.0")]
+[assembly: InternalsVisibleTo("SharpAPI")]
