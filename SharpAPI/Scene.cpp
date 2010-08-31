@@ -18,7 +18,6 @@
  */
 
 #include "main.h"
-#include "Scene.h"
 
 #pragma managed
 using namespace System;
