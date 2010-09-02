@@ -62,12 +62,6 @@ namespace SharpAPI
         /// </summary>
         public Console()
         {
-            using (Bitmap backgroundBitmap = new Bitmap(1, 1))
-            {
-                backgroundBitmap.SetPixel(0, 0, Color.FromArgb(175, 0, 0, 0));
-                backgroundBitmap.Save("background.png", ImageFormat.Png);
-            }
-
             pythonConsole = new PythonConsole(Font.NormalOutline);
         }
 
@@ -85,6 +79,12 @@ namespace SharpAPI
             textInputHandler.Backspace += new EventHandler(DecreaseIndentation);
             textInputHandler.Up += new EventHandler(PreviousCommand);
             textInputHandler.Down += new EventHandler(NextCommand);
+
+            using (Bitmap backgroundBitmap = new Bitmap(1, 1))
+            {
+                backgroundBitmap.SetPixel(0, 0, Color.FromArgb(175, 0, 0, 0));
+                backgroundBitmap.Save("background.png", ImageFormat.Png);
+            }
 
             backgroundTexture = new Texture("background.png");
 
