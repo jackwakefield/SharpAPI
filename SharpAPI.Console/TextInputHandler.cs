@@ -132,14 +132,14 @@ namespace SharpAPI
                     break;
                 case Keys.Back:
                     {
+                        if (Backspace != null)
+                            Backspace(this, EventArgs.Empty);
+
                         if (Cursor > 0)
                         {
                             text = text.Remove(Cursor - 1, 1);
                             Cursor--;
                         }
-
-                        if (Backspace != null)
-                            Backspace(this, EventArgs.Empty);
                     }
                     break;
                 case Keys.Left:

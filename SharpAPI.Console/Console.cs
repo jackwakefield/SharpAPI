@@ -102,8 +102,7 @@ namespace SharpAPI
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
         private void Execute(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(textInputHandler.Text))
-                pythonConsole.Execute(textInputHandler.Text);
+            pythonConsole.Execute(textInputHandler.Text);
         }
 
         /// <summary>
@@ -114,7 +113,7 @@ namespace SharpAPI
         private void DecreaseIndentation(object sender, EventArgs e)
         {
             if (string.IsNullOrWhiteSpace(textInputHandler.Text))
-                pythonConsole.DecreaseIndentation();
+                pythonConsole.DecreaseIndentation(true);
         }
 
         /// <summary>

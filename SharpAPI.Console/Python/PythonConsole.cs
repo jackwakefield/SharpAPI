@@ -109,7 +109,7 @@ namespace SharpAPI
         /// <summary>
         /// Decreases the indentation if a type is being defined.
         /// </summary>
-        public void DecreaseIndentation()
+        public void DecreaseIndentation(bool backspace = false)
         {
             if (!definingType)
                 return;
@@ -119,7 +119,10 @@ namespace SharpAPI
             if (definitionIndentation == 0)
             {
                 definingType = false;
-                Execute(definition, false);
+
+                if (!backspace)
+                    Execute(definition, false);
+
                 definition = string.Empty;
             }
         }
@@ -170,7 +173,7 @@ namespace SharpAPI
         /// <param name="command">The command.</param>
         public void Execute(string command, bool print = true)
         {
-            if (command.EndsWith(":"))
+            if (print && command.EndsWith(":"))
                 definingType = true;
 
             if (definingType)
@@ -201,6 +204,9 @@ namespace SharpAPI
             }
             else
             {
+                if (string.IsNullOrWhiteSpace(command))
+                    return;
+
                 if (print)
                 {
                     lines.Add(new ConsoleLine(string.Format("> {0}", command), LineType.Command));
