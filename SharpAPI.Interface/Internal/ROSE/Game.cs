@@ -29,12 +29,12 @@ namespace SharpAPI.Internal.ROSE
         /// <summary>
         /// Occurs when a key has been pressed.
         /// </summary>
-        public static event KeyboardEvent KeyDown;
+        public static event KeyboardHandler KeyDown;
 
         /// <summary>
         /// Occurs when a key has been released.
         /// </summary>
-        public static event KeyboardEvent KeyUp;
+        public static event KeyboardHandler KeyUp;
         
         #endregion
 
@@ -47,7 +47,7 @@ namespace SharpAPI.Internal.ROSE
         /// <param name="handled">if set to <c>true</c> [handled].</param>
         internal static void RaiseKeyDownEvent(int key, out bool handled)
         {
-            KeyboardEventHandler eventHandler = new KeyboardEventHandler((Keys)key);
+            KeyboardArgs eventHandler = new KeyboardArgs((Keys)key);
 
             if (KeyDown != null)
                 KeyDown(eventHandler);
@@ -62,7 +62,7 @@ namespace SharpAPI.Internal.ROSE
         /// <param name="handled">if set to <c>true</c> [handled].</param>
         internal static void RaiseKeyUpEvent(int key, out bool handled)
         {
-            KeyboardEventHandler eventHandler = new KeyboardEventHandler((Keys)key);
+            KeyboardArgs eventHandler = new KeyboardArgs((Keys)key);
 
             if (KeyUp != null)
                 KeyUp(eventHandler);

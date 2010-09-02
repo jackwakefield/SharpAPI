@@ -17,32 +17,7 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using SharpAPI.ROSE.Events;
-
-namespace SharpAPI.ROSE
+namespace SharpAPI.Engine.Events
 {
-    public static class Game
-    {
-        #region Events
-
-        /// <summary>
-        /// Occurs when a key has been pressed.
-        /// </summary>
-        public static event KeyboardHandler KeyDown
-        {
-            add { Internal.ROSE.Game.KeyDown += value; }
-            remove { Internal.ROSE.Game.KeyDown -= value; }
-        }
-
-        /// <summary>
-        /// Occurs when a key has been released.
-        /// </summary>
-        public static event KeyboardHandler KeyUp
-        {
-            add { Internal.ROSE.Game.KeyUp += value; }
-            remove { Internal.ROSE.Game.KeyUp -= value; }
-        }
-
-        #endregion
-    }
+    public delegate void RenderHandler();
 }

@@ -17,39 +17,47 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System.Windows.Forms;
-
-namespace SharpAPI.ROSE.Events
+namespace SharpAPI
 {
-    public delegate void KeyboardEvent(KeyboardEventHandler e);
+    /// <summary>
+    /// Determines the type of console line.
+    /// </summary>
+    public enum LineType
+    {
+        Command,
+        Print,
+        Error
+    }
 
-    public class KeyboardEventHandler
+    public class ConsoleLine
     {
         #region Properties
 
         /// <summary>
-        /// Gets or sets the key associated with the keyboard event.
+        /// Gets or sets the text.
         /// </summary>
-        /// <value>The key.</value>
-        public Keys Key { get; set; }
+        /// <value>The text.</value>
+        public string Text { get; set; }
 
         /// <summary>
-        /// Gets or sets a value indicating whether this <see cref="KeyboardEventHandler"/> has been handled.
+        /// Gets or sets the line type.
         /// </summary>
-        /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
-        public bool Handled { get; set; }
+        /// <value>The line type.</value>
+        public LineType Type { get; set; }
 
         #endregion
 
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="KeyboardEventHandler"/> class.
+        /// Initializes a new instance of the <see cref="ConsoleLine"/> class.
         /// </summary>
-        /// <param name="key">The key associated with the keyboard event.</param>
-        public KeyboardEventHandler(Keys key)
+        /// <param name="text">The text.</param>
+        /// <param name="type">The type.</param>
+        public ConsoleLine(string text, LineType type)
         {
-            Key = key;
+            Text = text;
+            Type = type;
         }
 
         #endregion

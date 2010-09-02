@@ -17,7 +17,7 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
+using SharpAPI.Engine.Events;
 
 namespace SharpAPI.Internal.Engine
 {
@@ -28,13 +28,13 @@ namespace SharpAPI.Internal.Engine
         /// <summary>
         /// Occurs when the engine calls renderScene.
         /// </summary>
-        public static event EventHandler Render;
+        public static event RenderHandler Render;
 
         /// <summary>
         /// Occurs before the engine calls endScene.
         /// Allows rendering on top of the user interface.
         /// </summary>
-        public static event EventHandler RenderOverlay;
+        public static event RenderHandler RenderOverlay;
 
         #endregion
 
@@ -46,7 +46,7 @@ namespace SharpAPI.Internal.Engine
         internal static void RaiseRenderEvent()
         {
             if (Render != null)
-                Render(null, EventArgs.Empty);
+                Render();
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace SharpAPI.Internal.Engine
         internal static void RaiseRenderOverlayEvent()
         {
             if (RenderOverlay != null)
-                RenderOverlay(null, EventArgs.Empty);
+                RenderOverlay();
         }
 
         #endregion

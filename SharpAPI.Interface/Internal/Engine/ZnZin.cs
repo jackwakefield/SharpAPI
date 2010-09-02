@@ -18,9 +18,7 @@
  */
 
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
+using System.Drawing;
 
 namespace SharpAPI.Internal.Engine
 {
@@ -28,10 +26,14 @@ namespace SharpAPI.Internal.Engine
     {
         internal delegate IntPtr loadTextureDelegate(string textureName, string textureFileName, int mipLevels, int useFilter);
         internal delegate int unloadTextureDelegate(IntPtr texture);
-        unsafe internal delegate int drawSpriteDelegate(IntPtr texture, int[] rectangle, float[] center, float[] position, uint color);
+        internal delegate int drawSpriteDelegate(IntPtr texture, int[] rectangle, float[] center, float[] position, uint color);
         internal delegate int beginSpriteDelegate(int flag);
         internal delegate int endSpriteDelegate();
-        internal delegate int drawFontDelegate(IntPtr font, int useSprite, int x, int y, uint colour, string message);
+        internal delegate int drawFontDelegate(IntPtr font, int useSprite, int x, int y, uint colour, string text);
+        internal delegate Size getFontTextExtentDelegate(IntPtr font, string text);
+        internal delegate int getFontHeightDelegate(IntPtr font);
+        internal delegate int getScreenWidthDelegate();
+        internal delegate int getScreenHeightDelegate();
         
         internal static loadTextureDelegate loadTexture;
         internal static unloadTextureDelegate unloadTexture;
@@ -39,5 +41,9 @@ namespace SharpAPI.Internal.Engine
         internal static beginSpriteDelegate beginSprite;
         internal static endSpriteDelegate endSprite;
         internal static drawFontDelegate drawFont;
+        internal static getFontTextExtentDelegate getFontTextExtent;
+        internal static getFontHeightDelegate getFontHeight;
+        internal static getScreenWidthDelegate getScreenWidth;
+        internal static getScreenHeightDelegate getScreenHeight;
     }
 }

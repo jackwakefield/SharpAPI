@@ -79,9 +79,11 @@
     <Compile Include="Engine\Scene.cs" />
     <Compile Include="Engine\Sprite.cs" />
     <Compile Include="Engine\Texture.cs" />
+    <Compile Include="Engine\Events\RenderHandler.cs" />
     <Compile Include="Internal\Engine\Scene.cs" />
     <Compile Include="Internal\Engine\ZnZin.cs" />
-    <Compile Include="ROSE\Events\KeyboardEventHandler.cs" />
+    <Compile Include="Internal\Native\User32.cs" />
+    <Compile Include="ROSE\Events\KeyboardHandler.cs" />
     <Compile Include="Internal\ROSE\Game.cs" />
     <Compile Include="Internal\ROSE\GameData.cs" />
     <Compile Include="Plugin\Attributes\PluginAuthor.cs" />
@@ -98,7 +100,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_UpdateAssemblyVersion="False" BuildVersion_BuildVersioningStyle="None.Increment.None.TimeStamp" BuildVersion_StartDate="2010/8/27" />
+      <UserProperties BuildVersion_StartDate="2010/8/27" BuildVersion_BuildVersioningStyle="None.Increment.None.TimeStamp" BuildVersion_UpdateAssemblyVersion="False" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

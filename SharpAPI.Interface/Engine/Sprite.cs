@@ -123,5 +123,26 @@ namespace SharpAPI.Engine
         {
             ZnZin.drawFont(GameData.GetFont((int)font), 1, x, y, (uint)colour.ToArgb(), text);
         }
+
+        /// <summary>
+        /// Calculates the width of the text using the specified font.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="font">The font.</param>
+        /// <returns></returns>
+        public static int TextWidth(string text, Font font)
+        {
+            return ZnZin.getFontTextExtent(GameData.GetFont((int)font), text).Width;
+        }
+
+        /// <summary>
+        /// Calculates the height of the specified font.
+        /// </summary>
+        /// <param name="font">The font.</param>
+        /// <returns></returns>
+        public static int FontHeight(Font font)
+        {
+            return ZnZin.getFontHeight(GameData.GetFont((int)font));
+        }
     }
 }

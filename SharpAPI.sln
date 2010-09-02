@@ -121,8 +121,8 @@ Global
 		{492BF8BC-B374-4152-9F4B-AEE41F88294E}.Release|x86.ActiveCfg = Release|Win32
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.DLL ASM Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -189,8 +189,8 @@ Global
 		{DE06C484-12FE-4A57-A7BA-26F492298CF3}.Release|x86.ActiveCfg = Release|Any CPU
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Mixed Platforms.Build.0 = Debug|x86
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|Win32.ActiveCfg = Debug|Any CPU
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.Debug|x86.ActiveCfg = Debug|Any CPU
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB}.DLL ASM Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -323,8 +323,8 @@ Global
 		{1DDB5620-1B0F-4D0E-BEB7-82BF1FEDC8DB} = {2A44EBF7-4365-40AB-93CB-D6002E649C97}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		BuildVersion_UpdateAssemblyVersion = False
-		BuildVersion_BuildVersioningStyle = None.Increment.None.TimeStamp
 		BuildVersion_StartDate = 2010/8/27
+		BuildVersion_BuildVersioningStyle = None.Increment.None.TimeStamp
+		BuildVersion_UpdateAssemblyVersion = False
 	EndGlobalSection
 EndGlobal

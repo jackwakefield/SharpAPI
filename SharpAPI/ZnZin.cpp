@@ -32,6 +32,10 @@ void __stdcall DelegateZnZinMethods(){
 	ZnZin::beginSprite = (ZnZin::beginSpriteDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "beginSprite"), ZnZin::beginSpriteDelegate::typeid);
 	ZnZin::endSprite = (ZnZin::endSpriteDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "endSprite"), ZnZin::endSpriteDelegate::typeid);
 	ZnZin::drawFont = (ZnZin::drawFontDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "?drawFont@@YAHIHHHKPBD@Z"), ZnZin::drawFontDelegate::typeid);
+	ZnZin::getFontTextExtent = (ZnZin::getFontTextExtentDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getFontTextExtent"), ZnZin::getFontTextExtentDelegate::typeid);
+	ZnZin::getFontHeight = (ZnZin::getFontHeightDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getFontHeight"), ZnZin::getFontHeightDelegate::typeid);
+	ZnZin::getScreenWidth = (ZnZin::getScreenWidthDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getScreenWidth"), ZnZin::getScreenWidthDelegate::typeid);
+	ZnZin::getScreenHeight = (ZnZin::getScreenHeightDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getScreenHeight"), ZnZin::getScreenHeightDelegate::typeid);
 }
 
 RunOnLoad(DelegateZnZinMethods);

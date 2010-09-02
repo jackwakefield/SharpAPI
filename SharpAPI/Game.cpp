@@ -48,13 +48,13 @@ bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 	switch(uiMsg){
 		case WM_KEYDOWN:
 			{
-				Game::RaiseKeyDownEvent(wParam, handled);
+				Game::RaiseKeyDownEvent(wParam & 0xFF, handled);
 				return handled;
 			}
 			break;
 		case WM_KEYUP:
 			{
-				Game::RaiseKeyUpEvent(wParam, handled);
+				Game::RaiseKeyUpEvent(wParam & 0xFF, handled);
 				return handled;
 			}
 			break;
