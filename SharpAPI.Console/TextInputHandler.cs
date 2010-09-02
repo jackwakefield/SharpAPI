@@ -96,7 +96,7 @@ namespace SharpAPI
         {
             MaximumCharacters = 255;
             text = string.Empty;
-            ToggleKey = Keys.Oem8;
+            ToggleKey = Keys.F12;
 
             Game.KeyDown += new KeyboardHandler(KeyDown);
         }
