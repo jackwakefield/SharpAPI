@@ -88,13 +88,15 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
-      <AdditionalLibraryDirectories>..\Debug</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>..\Release</AdditionalLibraryDirectories>
       <AdditionalDependencies>TGameCtrl_r.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Dialog.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameData.cpp" />
+    <ClCompile Include="IT_MGR.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="HookList.h" />
     <ClCompile Include="main.cpp" />
@@ -106,7 +108,10 @@
     <ClInclude Include="Code.h" />
     <ClInclude Include="Console.h" />
     <ClInclude Include="CStrVAR.h" />
+    <ClInclude Include="Dialog.h" />
     <ClInclude Include="GameData.h" />
+    <ClInclude Include="Interop.h" />
+    <ClInclude Include="IT_MGR.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="VariableTypes.h" />
     <ClInclude Include="Plugin.h" />

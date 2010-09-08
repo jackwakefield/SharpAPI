@@ -1,4 +1,4 @@
-﻿/*
+/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,14 +17,28 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System;
+#ifndef IT_MGR_H
+#define IT_MGR_H
 
-namespace SharpAPI.Internal.ROSE
-{
-    internal static class GameData
-    {
-        internal delegate IntPtr GetFontDelegate(int index);
+#pragma unmanaged
+#include "Templates.h"
 
-        internal static GetFontDelegate GetFont;
-    }
-}
+class CTDialog;
+
+class IT_MGR {
+public:
+	void AppendDlg(short type, CTDialog* dialog, int id = 0){  
+		return CallMemberFunction<IT_MGR, void, short, CTDialog*, int>(0x0048F9D0, this, type, dialog, id);  
+	}
+
+	static IT_MGR* Instance(){
+		return reinterpret_cast<IT_MGR*>(0x00697AD0);
+	}
+};
+
+#pragma managed
+using namespace System;
+
+static void AppendDlg(short type, IntPtr dialog, int id = 0){ IT_MGR::Instance()->AppendDlg(type, (CTDialog*)dialog.ToPointer(), id); }
+
+#endif

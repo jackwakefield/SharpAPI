@@ -225,6 +225,15 @@ namespace SharpAPI
         }
 
         /// <summary>
+        /// Prints the specified text to the console window.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        public void Print(string text, Color colour)
+        {
+            lines.Add(new ConsoleLine(text, LineType.Custom, colour));
+        }
+
+        /// <summary>
         /// Draws the console and the specified command.
         /// </summary>
         /// <param name="text">The text.</param>
@@ -241,6 +250,8 @@ namespace SharpAPI
 
                 if (lines[i].Type == LineType.Error)
                     colour = Color.Red;
+                else if (lines[i].Type == LineType.Custom)
+                    colour = lines[i].Colour;
 
                 Sprite.DrawText(lines[i].Text, font, 5, y, colour);
                 y += fontHeight;

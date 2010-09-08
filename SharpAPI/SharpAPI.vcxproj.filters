@@ -34,11 +34,20 @@
     <Filter Include="Header Files\DataTypes">
       <UniqueIdentifier>{ea3c55f8-cb59-488b-8a79-4841c0e48350}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{c596252a-2bb4-451f-8fd1-2cd4c8ee68fc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{3ca398a4-d845-4f70-a98e-90f4de71564e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ROSE\Interface">
+      <UniqueIdentifier>{ae4100c3-60c2-4c94-ba15-9e5cae3da5f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ROSE\Interface">
+      <UniqueIdentifier>{bb9f0fd4-bd1c-4cf9-a2b4-af10482d8f1d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="HookList.h">
       <Filter>Header Files\Helpers</Filter>
     </ClCompile>
@@ -59,6 +68,15 @@
     </ClCompile>
     <ClCompile Include="GameData.cpp">
       <Filter>Source Files\ROSE</Filter>
+    </ClCompile>
+    <ClCompile Include="Dialog.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
+    <ClCompile Include="IT_MGR.cpp">
+      <Filter>Source Files\ROSE\Interface</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -94,6 +112,15 @@
     </ClInclude>
     <ClInclude Include="GameData.h">
       <Filter>Header Files\ROSE</Filter>
+    </ClInclude>
+    <ClInclude Include="Dialog.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="IT_MGR.h">
+      <Filter>Header Files\ROSE\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Interop.h">
+      <Filter>Header Files\Helpers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

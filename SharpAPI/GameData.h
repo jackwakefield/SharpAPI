@@ -47,8 +47,6 @@ public:
 		return *reinterpret_cast<GameData**>(0x00693504);
 	}
 
-	static HNODE GetFont(int index);
-
 public:
 	bool mWireMode;
 	bool mDrawBoundingVolume;
@@ -81,5 +79,12 @@ public:
 	CStrVAR mTrailTexture;
 	HNODE mFonts[MAX_FONT];
 };
+
+#pragma managed
+using namespace System;
+
+static IntPtr GetFont(int index){
+	return (IntPtr)(void*)GameData::Instance()->mFonts[index];
+}
 
 #endif

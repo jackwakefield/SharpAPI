@@ -17,6 +17,7 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+using System.Drawing;
 namespace SharpAPI
 {
     /// <summary>
@@ -26,7 +27,8 @@ namespace SharpAPI
     {
         Command,
         Print,
-        Error
+        Error,
+        Custom
     }
 
     public class ConsoleLine
@@ -45,6 +47,12 @@ namespace SharpAPI
         /// <value>The line type.</value>
         public LineType Type { get; set; }
 
+        /// <summary>
+        /// Gets or sets a custom colour.
+        /// </summary>
+        /// <value>The colour.</value>
+        public Color Colour { get; set; }
+
         #endregion
 
         #region Constructor
@@ -58,6 +66,19 @@ namespace SharpAPI
         {
             Text = text;
             Type = type;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="ConsoleLine"/> class.
+        /// </summary>
+        /// <param name="text">The text.</param>
+        /// <param name="type">The type.</param>
+        /// <param name="colour">The colour.</param>
+        public ConsoleLine(string text, LineType type, Color colour)
+        {
+            Text = text;
+            Type = type;
+            Colour = colour;
         }
 
         #endregion

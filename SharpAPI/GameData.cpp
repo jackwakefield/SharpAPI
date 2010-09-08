@@ -25,13 +25,7 @@ using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal;
 
 void __stdcall DelegateGameDataMethods(){
-	ROSE::GameData::GetFont = (ROSE::GameData::GetFontDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GameData::GetFont, ROSE::GameData::GetFontDelegate::typeid);
+	ROSE::GameData::GetFont = gcnew ROSE::GameData::GetFontDelegate(GetFont);
 }
 
 RunOnLoad(DelegateGameDataMethods);
-
-#pragma unmanaged
-
-HNODE GameData::GetFont(int index){
-	return GameData::Instance()->mFonts[index];
-}

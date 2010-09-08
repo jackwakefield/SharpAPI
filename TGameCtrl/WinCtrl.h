@@ -44,6 +44,8 @@ public:
 	virtual void SetOffset(int x, int y);
 	virtual void SetOffset(POINT offset);
 	virtual void MoveWindow(POINT pos);
+	void SetHeight(int height);
+	void SetWidth(int width);
 
 	void AddActionListener(IActionListener* actionListener);
 	void RemoveActionListener(IActionListener* actionListener);
@@ -69,14 +71,12 @@ public:
 	void SetCtrlStatus(unsigned long status);
 	void SetDraw(ITDraw* draw);
 	void SetEnable(bool enable);
-	void SetHeight(int height);
 	void SetOwnerDraw(bool ownerDraw);
 	void SetParent(CWinCtrl* parent);
 	int SetPosition(int posX, int posY);
 	int SetPosition(POINT pos);
 	void SetScaleHeight(float scaleHeight);
 	void SetScaleWidth(float scaleWidth);
-	void SetWidth(int width);
 
 protected:
 	//CTObject is at 0x00

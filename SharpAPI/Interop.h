@@ -17,43 +17,16 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "main.h"
-#include "Interop.h"
-
-DWORD gManagedThread;
+#ifndef INTEROP_H
+#define INTEROP_H
 
 #pragma managed
-using namespace System;
-using namespace System::IO;
-using namespace System::Collections::Generic;
+#include <msclr\marshal.h>
+using namespace msclr::interop;
 
-DWORD WINAPI ManagedThread(LPVOID lpThreadParameter){
-	Interop::mMarshalContext = gcnew marshal_context();
+public ref class Interop {
+public:
+	static marshal_context^ mMarshalContext;
+};
 
-	HookList::Instance().ApplyHooks();
-	WriteList::Instance().ApplyWrites();
-
-	return 0;
-}
-
-#pragma unmanaged
-
-BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
-	switch(dwReason){
-		case DLL_PROCESS_ATTACH:
-			{
-#ifdef ENABLE_CONSOLE
-				::CreateConsole();
 #endif
-				CreateThread(NULL, 0, ManagedThread, NULL, 0, &gManagedThread);
-			}
-			break;
-		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
-			break;
-	}
-	
-	return true;
-}
