@@ -22,12 +22,19 @@
 
 #include <TDialog.h>
 #include "Interop.h"
+#include "ExternalUILobby.h"
 
 #pragma managed
 using namespace System;
 
-static void* NewDialog(){ return new CTDialog(); }
-static void Create(IntPtr dialog, String^ name){ ((CTDialog*)dialog.ToPointer())->Create(Interop::mMarshalContext->marshal_as<const char*>(name)); }
+static IntPtr NewDialog(bool external){
+	CTDialog* dialog = new CTDialog();
+	if(external) CExternalUILobby::mDialogs.push_back(dialog);
+	return (IntPtr)(void*)dialog;
+}
+
+static bool Create(IntPtr dialog, String^ name){ return ((CTDialog*)dialog.ToPointer())->Create(Interop::mMarshalContext->marshal_as<const char*>(name)); }
+static bool CreateEmpty(IntPtr dialog, int x, int y, int width, int height){ return ((CTDialog*)dialog.ToPointer())->Create(x, y, width, height); }
 static int GetControlID(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->GetControlID(); }
 static void SetControlID(IntPtr dialog, int id){ ((CTDialog*)dialog.ToPointer())->SetControlID(id); }
 static int GetWidth(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->GetWidth(); }

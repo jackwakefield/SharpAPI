@@ -46,6 +46,12 @@
     <Filter Include="Header Files\ROSE\Interface">
       <UniqueIdentifier>{bb9f0fd4-bd1c-4cf9-a2b4-af10482d8f1d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ROSE\Interface\External">
+      <UniqueIdentifier>{01911476-fd5b-4936-896b-19a2e8f5ca31}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ROSE\Interface\External">
+      <UniqueIdentifier>{7e051ab4-e329-4eb7-a9d4-d51af19493f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HookList.h">
@@ -77,6 +83,12 @@
     </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="ExternalUIManager.cpp">
+      <Filter>Source Files\ROSE\Interface\External</Filter>
+    </ClCompile>
+    <ClCompile Include="ExternalUILobby.cpp">
+      <Filter>Source Files\ROSE\Interface\External</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +133,12 @@
     </ClInclude>
     <ClInclude Include="Interop.h">
       <Filter>Header Files\Helpers</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternalUILobby.h">
+      <Filter>Header Files\ROSE\Interface\External</Filter>
+    </ClInclude>
+    <ClInclude Include="ExternalUIManager.h">
+      <Filter>Header Files\ROSE\Interface\External</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -28,6 +28,7 @@ using namespace SharpAPI::Internal::UI;
 void __stdcall DelegateDialogMethods(){
 	Dialog::New = gcnew Dialog::NewDelegate(NewDialog);
 	Dialog::Create = gcnew Dialog::CreateDelegate(Create);
+	Dialog::CreateEmpty = gcnew Dialog::CreateEmptyDelegate(CreateEmpty);
 	Dialog::GetControlID = gcnew Dialog::GetControlIDDelegate(GetControlID);
 	Dialog::SetControlID = gcnew Dialog::SetControlIDDelegate(SetControlID);
 	Dialog::GetWidth = gcnew Dialog::GetWidthDelegate(GetWidth);

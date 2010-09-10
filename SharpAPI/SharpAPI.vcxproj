@@ -94,6 +94,8 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="Dialog.cpp" />
+    <ClCompile Include="ExternalUILobby.cpp" />
+    <ClCompile Include="ExternalUIManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="IT_MGR.cpp" />
@@ -109,6 +111,8 @@
     <ClInclude Include="Console.h" />
     <ClInclude Include="CStrVAR.h" />
     <ClInclude Include="Dialog.h" />
+    <ClInclude Include="ExternalUILobby.h" />
+    <ClInclude Include="ExternalUIManager.h" />
     <ClInclude Include="GameData.h" />
     <ClInclude Include="Interop.h" />
     <ClInclude Include="IT_MGR.h" />

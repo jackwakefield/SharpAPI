@@ -63,8 +63,8 @@ namespace SharpAPI
         public Console()
         {
             pythonConsole = new PythonConsole(Font.NormalOutline);
-            pythonConsole.Print("# Welcome to the SharpAPI console", Color.LightBlue);
-            pythonConsole.Print("# This console is Python based and provides simplicity while developing plugins", Color.LightBlue);
+            pythonConsole.Print("# Welcome to the SharpAPI console", Color.DodgerBlue);
+            pythonConsole.Print("# This console is Python based and provides as a simplistic proxy to the interface library", Color.DodgerBlue);
             pythonConsole.Execute("from SharpAPI.ROSE import *");
             pythonConsole.Execute("from SharpAPI.Engine import *");
             pythonConsole.Execute("from SharpAPI.UI import *");

@@ -17,15 +17,15 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "IT_MGR.h"
+#include "ExternalUIManager.h"
 #include "main.h"
 
 #pragma managed
 using namespace System::Runtime::InteropServices;
-using namespace SharpAPI::Internal::ROSE;
+using namespace SharpAPI::Internal::ROSE::Interface;
 
-void __stdcall DelegateITMGRMethods(){
-	Interface::IT_MGR::AppendDlg = gcnew Interface::IT_MGR::AppendDlgDelegate(AppendDlg);
+void __stdcall DelegateExternalUIManagerMethods(){
+	External::ExternalUIManager::GetEUI = gcnew External::ExternalUIManager::GetEUIDelegate(GetEUI);
 }
 
-RunOnLoad(DelegateITMGRMethods);
+RunOnLoad(DelegateExternalUIManagerMethods);

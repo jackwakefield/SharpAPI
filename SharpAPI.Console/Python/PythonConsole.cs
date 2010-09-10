@@ -249,7 +249,7 @@ namespace SharpAPI
                 Color colour = Color.FromArgb(255, 236, 236, 236);
 
                 if (lines[i].Type == LineType.Error)
-                    colour = Color.Red;
+                    colour = Color.OrangeRed;
                 else if (lines[i].Type == LineType.Custom)
                     colour = lines[i].Colour;
 

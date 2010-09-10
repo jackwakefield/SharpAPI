@@ -17,15 +17,25 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "IT_MGR.h"
-#include "main.h"
+#ifndef EXTERNALUIMANAGER
+#define EXTERNALUIMANAGER_H
+
+#pragma unmanaged
+#include "Templates.h"
+#include "ExternalUILobby.h"
+
+class CTDialog;
+
+class CExternalUIManager {
+public:
+	CTDialog* GetEUI(int type){
+		return CallMemberFunction<CExternalUIManager, CTDialog*, int>(0x004993E0, this, type); 
+	}
+};
 
 #pragma managed
-using namespace System::Runtime::InteropServices;
-using namespace SharpAPI::Internal::ROSE;
+using namespace System;
 
-void __stdcall DelegateITMGRMethods(){
-	Interface::IT_MGR::AppendDlg = gcnew Interface::IT_MGR::AppendDlgDelegate(AppendDlg);
-}
+static IntPtr GetEUI(int type){ return (IntPtr)(void*)CExternalUILobby::Instance()->GetExternalUIManager()->GetEUI(type); }
 
-RunOnLoad(DelegateITMGRMethods);
+#endif

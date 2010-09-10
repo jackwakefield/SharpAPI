@@ -21,10 +21,11 @@ using System;
 
 namespace SharpAPI.Internal.UI
 {
-    internal unsafe static class Dialog
+    internal static class Dialog
     {
-        internal delegate void* NewDelegate();
-        internal delegate void CreateDelegate(IntPtr dialog, string name);
+        internal delegate IntPtr NewDelegate(bool external);
+        internal delegate bool CreateDelegate(IntPtr dialog, string name);
+        internal delegate bool CreateEmptyDelegate(IntPtr dialog, int x, int y, int width, int height);
         internal delegate int GetControlIDDelegate(IntPtr dialog);
         internal delegate void SetControlIDDelegate(IntPtr dialog, int id);
         internal delegate int GetWidthDelegate(IntPtr dialog);
@@ -36,6 +37,7 @@ namespace SharpAPI.Internal.UI
 
         internal static NewDelegate New;
         internal static CreateDelegate Create;
+        internal static CreateEmptyDelegate CreateEmpty;
         internal static GetControlIDDelegate GetControlID;
         internal static SetControlIDDelegate SetControlID;
         internal static GetWidthDelegate GetWidth;
@@ -44,14 +46,5 @@ namespace SharpAPI.Internal.UI
         internal static SetHeightDelegate SetHeight;
         internal static ShowDelegate Show;
         internal static HideDelegate Hide;
-
-        /// <summary>
-        /// Creates a new dialog safely.
-        /// </summary>
-        /// <returns></returns>
-        internal static IntPtr SafeNew()
-        {
-            return new IntPtr(New());
-        }
     }
 }

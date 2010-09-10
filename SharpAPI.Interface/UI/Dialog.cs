@@ -71,13 +71,33 @@ namespace SharpAPI.UI
         /// Initializes a new instance of the <see cref="Dialog"/> class.
         /// </summary>
         /// <param name="type">The unique dialog identifier.</param>
-        /// <param name="name">The optional Xml file name.</param>
-        public Dialog(short type, string name = null)
+        /// <param name="name">The Xml file name.</param>
+        /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
+        public Dialog(short type, string name, bool external = false)
         {
-            handle = InternalDialog.SafeNew();
+            handle = InternalDialog.New(external);
 
-            if (!string.IsNullOrWhiteSpace(name))
-                InternalDialog.Create(handle, name);
+            if (!InternalDialog.Create(handle, name))
+                throw new Exception(string.Format("An error occured while creating dialog {0}", name));
+
+            IT_MGR.AppendDlg(type, handle, ControlID);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dialog"/> class.
+        /// </summary>
+        /// <param name="type">The unique dialog indentifier.</param>
+        /// <param name="x">The x location.</param>
+        /// <param name="y">The y location.</param>
+        /// <param name="width">The width.</param>
+        /// <param name="height">The height.</param>
+        /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
+        public Dialog(short type, int x, int y, int width, int height, bool external = false)
+        {
+            handle = InternalDialog.New(external);
+
+            if (!InternalDialog.CreateEmpty(handle, x, y, width, height))
+                throw new Exception(string.Format("An error occured while creating the dialog"));
 
             IT_MGR.AppendDlg(type, handle, ControlID);
         }
