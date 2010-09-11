@@ -162,7 +162,7 @@ namespace SharpAPI
 
             Sprite.Begin(true);
             backgroundTexture.Draw(0, 0, width, height);
-            pythonConsole.Draw(textInputHandler.Text, textInputHandler.Cursor, height);
+            pythonConsole.Draw(textInputHandler.Text, textInputHandler.Cursor, height, textInputHandler.Selected);
             Sprite.End();
         }
 

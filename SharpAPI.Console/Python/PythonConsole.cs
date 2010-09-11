@@ -25,6 +25,7 @@ using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using SharpAPI.Engine;
 using SharpAPI.Plugin;
+using System.Drawing.Imaging;
 
 namespace SharpAPI
 {
@@ -55,6 +56,8 @@ namespace SharpAPI
         private Font font;
         private int fontHeight;
 
+        private Texture overlay;
+
         private bool definingType;
         private string definition;
         private int definitionIndentation;
@@ -72,6 +75,14 @@ namespace SharpAPI
 
             this.font = font;
             fontHeight = Sprite.FontHeight(font);
+
+            using (Bitmap overlayBitmap = new Bitmap(1, 1))
+            {
+                overlayBitmap.SetPixel(0, 0, Color.FromArgb(125, 100, 177, 255));
+                overlayBitmap.Save("overlay.png", ImageFormat.Png);
+            }
+
+            overlay = new Texture("overlay.png");
 
             ScriptRuntimeSetup runtimeSetup = Python.CreateRuntimeSetup(null);
             runtimeSetup.DebugMode = true;
@@ -239,7 +250,8 @@ namespace SharpAPI
         /// <param name="text">The text.</param>
         /// <param name="cursor">The cursor.</param>
         /// <param name="height">The height.</param>
-        public void Draw(string text, int cursor, int height)
+        /// <param name="selected">if set to <c>true</c> [selected].</param>
+        public void Draw(string text, int cursor, int height, bool selected)
         {
             int y = 5;
             int limit = height / fontHeight - 1;
@@ -273,8 +285,18 @@ namespace SharpAPI
             commandLine += text;
             Sprite.DrawText(commandLine, font, 5, y, Color.White);
 
-            int cursorPosition = Sprite.TextWidth(commandLine.Substring(0, cursor + commandStart), font);
-            Sprite.DrawText("_", font, 5 + cursorPosition, y + 1, Color.White);
+            if (selected)
+            {
+                int textIndex = commandLine.IndexOf(text);
+                int x = 5 + Sprite.TextWidth(commandLine.Substring(0, textIndex), Font.NormalOutline);
+                int width = Sprite.TextWidth(commandLine.Substring(textIndex, commandLine.Length - textIndex), Font.NormalOutline);
+                overlay.Draw(x, y, width, Sprite.FontHeight(Font.NormalOutline));
+            }
+            else
+            {
+                int cursorPosition = Sprite.TextWidth(commandLine.Substring(0, cursor + commandStart), font);
+                Sprite.DrawText("_", font, 5 + cursorPosition, y + 1, Color.White);
+            }
         }
     }
 }

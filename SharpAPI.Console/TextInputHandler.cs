@@ -76,6 +76,12 @@ namespace SharpAPI
         /// <value>The maximum amount of characters allowed to be entered.</value>
         public int MaximumCharacters { get; set; }
 
+        /// <summary>
+        /// Gets or sets a value indicating whether this <see cref="TextInputHandler"/> is selected.
+        /// </summary>
+        /// <value><c>true</c> if selected; otherwise, <c>false</c>.</value>
+        public bool Selected { get; set; }
+
         #endregion
 
         #region Events
@@ -126,8 +132,28 @@ namespace SharpAPI
             {
                 case Keys.Delete:
                     {
-                        if (Cursor < text.Length)
-                            text = text.Remove(Cursor, 1);
+                        if (Selected)
+                        {
+                            Text = string.Empty;
+                            Selected = false;
+                        }
+                        else if (Cursor < text.Length)
+                        {
+                            if (e.Ctrl)
+                            {
+                                int length = 0;
+
+                                for (length = Cursor; length < text.Length; length++)
+                                {
+                                    if (text[length] == ' ' && length != Cursor)
+                                        break;
+                                }
+
+                                text = text.Remove(Cursor, length - Cursor);
+                            }
+                            else
+                                text = text.Remove(Cursor, 1);
+                        }
                     }
                     break;
                 case Keys.Back:
@@ -135,23 +161,90 @@ namespace SharpAPI
                         if (Backspace != null)
                             Backspace(this, EventArgs.Empty);
 
-                        if (Cursor > 0)
+                        if (Selected)
                         {
-                            text = text.Remove(Cursor - 1, 1);
-                            Cursor--;
+                            Text = string.Empty;
+                            Selected = false;
+                        }
+                        else if (Cursor > 0)
+                        {
+                            if (e.Ctrl)
+                            {
+                                int length = 0;
+
+                                for (length = Cursor - 1; length > 0; length--)
+                                {
+                                    if (text[length] == ' ' && length != Cursor - 1)
+                                    {
+                                        length++;
+                                        break;
+                                    }
+                                }
+
+                                text = text.Remove(length, Cursor - length);
+                                Cursor -= Cursor - length;
+                            }
+                            else
+                            {
+                                text = text.Remove(Cursor - 1, 1);
+                                Cursor--;
+                            }
                         }
                     }
                     break;
                 case Keys.Left:
                     {
-                        if (Cursor > 0)
-                            Cursor--;
+                        if (Selected)
+                        {
+                            Cursor = 0;
+                            Selected = false;
+                        }
+                        else if (Cursor > 0)
+                        {
+                            if (e.Ctrl)
+                            {
+                                int length = 0;
+
+                                for (length = Cursor - 1; length > 0; length--)
+                                {
+                                    if (text[length] == ' ' && length != Cursor - 1)
+                                    {
+                                        length++;
+                                        break;
+                                    }
+                                }
+
+                                Cursor -= Cursor - length;
+                            }
+                            else
+                                Cursor--;
+                        }
                     }
                     break;
                 case Keys.Right:
                     {
-                        if (Cursor < text.Length)
-                            Cursor++;
+                        if (Selected)
+                        {
+                            Cursor = text.Length;
+                            Selected = false;
+                        }
+                        else if (Cursor < text.Length)
+                        {
+                            if (e.Ctrl)
+                            {
+                                int length = 0;
+
+                                for (length = Cursor; length < text.Length; length++)
+                                {
+                                    if (text[length] == ' ' && length != Cursor)
+                                        break;
+                                }
+
+                                Cursor += length - Cursor;
+                            }
+                            else
+                                Cursor++;
+                        }
                     }
                     break;
                 case Keys.Up:
@@ -173,14 +266,75 @@ namespace SharpAPI
 
                         Cursor = 0;
                         text = string.Empty;
+
+                        if (Selected)
+                            Selected = false;
                     }
                     break;
                 default:
                     {
-                        if (!char.IsControl(e.Value) && Cursor < MaximumCharacters)
+                        if (e.Ctrl)
                         {
-                            text = text.Insert(Cursor, e.Value.ToString());
-                            Cursor++;
+                            switch (e.Key)
+                            {
+                                case Keys.V:
+                                    {
+                                        if (!Clipboard.ContainsText())
+                                            break;
+
+                                        string clipboardText = Clipboard.GetText(TextDataFormat.Text);
+
+                                        if (Selected)
+                                        {
+                                            Text = clipboardText;
+                                            Selected = false;
+                                        }
+                                        else
+                                        {
+                                            text = text.Insert(Cursor, clipboardText);
+                                            Cursor += clipboardText.Length;
+                                        }
+                                    }
+                                    break;
+                                case Keys.A:
+                                    {
+                                        if (text.Length > 0)
+                                            Selected = true;
+                                    }
+                                    break;
+                                case Keys.C:
+                                    {
+                                        if (Selected)
+                                            Clipboard.SetText(text);
+                                    }
+                                    break;
+                                case Keys.X:
+                                    {
+                                        if (Selected)
+                                        {
+                                            Clipboard.SetText(text);
+                                            Text = string.Empty;
+                                            Selected = false;
+                                        }
+                                    }
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            if (!char.IsControl(e.Value) && Cursor < MaximumCharacters)
+                            {
+                                if (Selected)
+                                {
+                                    Text = e.Value.ToString();
+                                    Selected = false;
+                                }
+                                else
+                                {
+                                    text = text.Insert(Cursor, e.Value.ToString());
+                                    Cursor++;
+                                }
+                            }
                         }
                     }
                     break;

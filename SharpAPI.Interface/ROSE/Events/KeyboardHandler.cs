@@ -35,10 +35,10 @@ namespace SharpAPI.ROSE.Events
         #region Properties
 
         /// <summary>
-        /// Gets or sets the key associated with the keyboard event.
+        /// Gets the key associated with the keyboard event.
         /// </summary>
         /// <value>The key.</value>
-        public Keys Key { get; set; }
+        public Keys Key { get; private set; }
 
         /// <summary>
         /// Gets or sets the value.
@@ -68,6 +68,12 @@ namespace SharpAPI.ROSE.Events
         /// <value><c>true</c> if handled; otherwise, <c>false</c>.</value>
         public bool Handled { get; set; }
 
+        public bool Ctrl { get; private set; }
+
+        public bool Alt { get; private set; }
+
+        public bool Shift { get; private set; }
+
         #endregion
 
         #region Constructor
@@ -76,9 +82,12 @@ namespace SharpAPI.ROSE.Events
         /// Initializes a new instance of the <see cref="KeyboardArgs"/> class.
         /// </summary>
         /// <param name="key">The key associated with the keyboard event.</param>
-        public KeyboardArgs(Keys key)
+        public KeyboardArgs(Keys key, bool ctrl, bool alt, bool shift)
         {
             Key = key;
+            Ctrl = ctrl;
+            Alt = alt;
+            Shift = shift;
         }
 
         #endregion

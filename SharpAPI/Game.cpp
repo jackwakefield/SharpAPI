@@ -46,15 +46,17 @@ void __stdcall ChangeState(int state){
 bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 	static bool handled;
 	switch(uiMsg){
+		case WM_SYSKEYDOWN:
 		case WM_KEYDOWN:
 			{
-				Game::RaiseKeyDownEvent(wParam & 0xFF, handled);
+				Game::RaiseKeyDownEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000, GetAsyncKeyState(VK_MENU) & 0x8000, GetAsyncKeyState(VK_SHIFT) & 0x8000);
 				return handled;
 			}
 			break;
+		case WM_SYSKEYUP:
 		case WM_KEYUP:
 			{
-				Game::RaiseKeyUpEvent(wParam & 0xFF, handled);
+				Game::RaiseKeyUpEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000, GetAsyncKeyState(VK_MENU) & 0x8000, GetAsyncKeyState(VK_SHIFT) & 0x8000);
 				return handled;
 			}
 			break;
