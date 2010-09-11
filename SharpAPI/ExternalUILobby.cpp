@@ -35,9 +35,16 @@ void __stdcall UpdateExternalUI(POINT mouse){
 }
 
 bool __stdcall ProcessExternalUI(unsigned int uiMsg, WPARAM wParam, LPARAM lParam){
-	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog){
-		if((*dialog)->Process(uiMsg, wParam, lParam))
+	for(auto dialog = CExternalUILobby::mDialogs.rbegin(); dialog != CExternalUILobby::mDialogs.rend(); ++dialog){
+		if((*dialog)->Process(uiMsg, wParam, lParam)){
+			if(uiMsg == WM_LBUTTONDOWN){
+				CTDialog* dialogItem = *dialog;
+				CExternalUILobby::mDialogs.erase(--dialog.base());
+				CExternalUILobby::mDialogs.push_back(dialogItem);
+			}
+			
 			return true;
+		}
 	}
 
 	return false;
