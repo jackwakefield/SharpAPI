@@ -23,45 +23,11 @@ using InternalDialog = SharpAPI.Internal.UI.Dialog;
 
 namespace SharpAPI.UI
 {
-    public class Dialog
+    public class Dialog : Control, IDisposable
     {
         #region Variables
 
-        private IntPtr handle;
-
-        #endregion
-
-        #region Properties
-
-        /// <summary>
-        /// Gets or sets the width.
-        /// </summary>
-        /// <value>The width.</value>
-        public int Width
-        {
-            get { return InternalDialog.GetWidth(handle); }
-            set { InternalDialog.SetWidth(handle, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets the height.
-        /// </summary>
-        /// <value>The height.</value>
-        public int Height
-        {
-            get { return InternalDialog.GetHeight(handle); }
-            set { InternalDialog.SetHeight(handle, value); }
-        }
-
-        /// <summary>
-        /// Gets or sets the control ID.
-        /// </summary>
-        /// <value>The control ID.</value>
-        public int ControlID
-        {
-            get { return InternalDialog.GetControlID(handle); }
-            set { InternalDialog.SetControlID(handle, value); }
-        }
+        private bool external;
 
         #endregion
 
@@ -70,13 +36,21 @@ namespace SharpAPI.UI
         /// <summary>
         /// Initializes a new instance of the <see cref="Dialog"/> class.
         /// </summary>
+        private Dialog(bool external)
+        {
+            handle = InternalDialog.New(Draw, Update, Process, external);
+            this.external = external;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Dialog"/> class.
+        /// </summary>
         /// <param name="type">The unique dialog identifier.</param>
         /// <param name="name">The Xml file name.</param>
         /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
         public Dialog(short type, string name, bool external = false)
+            : this(external)
         {
-            handle = InternalDialog.New(external);
-
             if (!InternalDialog.Create(handle, name))
                 throw new Exception(string.Format("An error occured while creating dialog {0}", name));
 
@@ -93,31 +67,58 @@ namespace SharpAPI.UI
         /// <param name="height">The height.</param>
         /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
         public Dialog(short type, int x, int y, int width, int height, bool external = false)
+            : this(external)
         {
-            handle = InternalDialog.New(external);
-
             if (!InternalDialog.CreateEmpty(handle, x, y, width, height))
                 throw new Exception(string.Format("An error occured while creating the dialog"));
 
             IT_MGR.AppendDlg(type, handle, ControlID);
         }
-        
+
+        #endregion
+
+        #region IDispose Methods
+
+        /// <summary>
+        /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+        /// </summary>
+        public void Dispose()
+        {
+            InternalDialog.Free(handle, external);
+        }
+
         #endregion
 
         /// <summary>
-        /// Shows the dialog.
+        /// Called when the game draws the dialog.
+        /// Override this method with dialog-specific rendering code;
         /// </summary>
-        public void Show()
+        protected virtual void Draw()
         {
-            InternalDialog.Show(handle);
+
         }
 
         /// <summary>
-        /// Hides the dialog.
+        /// Called when the game updates the dialog.
+        /// Override this method with dialog-specific logic;
         /// </summary>
-        public void Hide()
+        /// <param name="x">The x position.</param>
+        /// <param name="y">The y position.</param>
+        protected virtual void Update(int x, int y)
         {
-            InternalDialog.Hide(handle);
+
+        }
+
+        /// <summary>
+        /// Processes the dialog.
+        /// </summary>
+        /// <param name="controlID">The control ID.</param>
+        /// <param name="message">The message.</param>
+        /// <param name="wParameter">The w parameter.</param>
+        /// <param name="lParameter">The l parameter.</param>
+        private void Process(int controlID, int message, int wParameter, int lParameter)
+        {
+
         }
     }
 }

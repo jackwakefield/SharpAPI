@@ -22,62 +22,62 @@ using System.Drawing;
 using SharpAPI.Internal.Engine;
 using SharpAPI.Internal.ROSE;
 
-#region Enumerations
-
-/// <summary>
-/// Direct3D sprite flags.
-/// </summary>
-[Flags]
-internal enum SpriteFlags
-{
-    None = 0,
-    DoNotSaveState = (1 << 0),
-    DoNotModifyRenderState = (1 << 1),
-    ObjectSpace = (1 << 2),
-    Billboard = (1 << 3),
-    AlphaBlend = (1 << 4),
-    SortTexture = (1 << 5),
-    SortDepthFrontToBack = (1 << 6),
-    SortDepthBackToFront = (1 << 7),
-    DoNotAddRefTexture = (1 << 8),
-}
-
-/// <summary>
-/// Determines the method of sorting.
-/// </summary>
-public enum SortMode
-{
-    None = SpriteFlags.None,
-    Sort = SpriteFlags.SortTexture,
-    FrontToBack = SpriteFlags.SortTexture,
-    BackToFront = SpriteFlags.SortTexture
-}
-
-/// <summary>
-/// Pre-declared System fonts.
-/// </summary>
-public enum Font
-{
-    Normal,
-    Large,
-    Small,
-    NormalBold,
-    LargeBold,
-    SmallBold,
-    Title,
-    Description,
-    NormalOutline,
-    Outline18Bold,
-    Outline14Bold,
-    Outline24Bold,
-    Outline16Bold,
-    Outline11Bold
-}
-
-#endregion
-
 namespace SharpAPI.Engine
 {
+    #region Enumerations
+
+    /// <summary>
+    /// Direct3D sprite flags.
+    /// </summary>
+    [Flags]
+    internal enum SpriteFlags
+    {
+        None = 0,
+        DoNotSaveState = (1 << 0),
+        DoNotModifyRenderState = (1 << 1),
+        ObjectSpace = (1 << 2),
+        Billboard = (1 << 3),
+        AlphaBlend = (1 << 4),
+        SortTexture = (1 << 5),
+        SortDepthFrontToBack = (1 << 6),
+        SortDepthBackToFront = (1 << 7),
+        DoNotAddRefTexture = (1 << 8),
+    }
+
+    /// <summary>
+    /// Determines the method of sorting.
+    /// </summary>
+    public enum SortMode
+    {
+        None = SpriteFlags.None,
+        Sort = SpriteFlags.SortTexture,
+        FrontToBack = SpriteFlags.SortTexture,
+        BackToFront = SpriteFlags.SortTexture
+    }
+
+    /// <summary>
+    /// Pre-declared System fonts.
+    /// </summary>
+    public enum Font
+    {
+        Normal,
+        Large,
+        Small,
+        NormalBold,
+        LargeBold,
+        SmallBold,
+        Title,
+        Description,
+        NormalOutline,
+        Outline18Bold,
+        Outline14Bold,
+        Outline24Bold,
+        Outline16Bold,
+        Outline11Bold
+    }
+
+    #endregion
+
     public static class Sprite
     {
         /// <summary>

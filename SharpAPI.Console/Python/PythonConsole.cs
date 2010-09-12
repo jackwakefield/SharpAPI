@@ -20,12 +20,13 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.Drawing.Imaging;
 using System.IO;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using SharpAPI.Engine;
 using SharpAPI.Plugin;
-using System.Drawing.Imaging;
+using Font = SharpAPI.Engine.Font;
 
 namespace SharpAPI
 {

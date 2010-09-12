@@ -21,27 +21,65 @@
 #define DIALOG_H
 
 #include <TDialog.h>
+#include "SharpAPI.h"
 #include "Interop.h"
 #include "ExternalUILobby.h"
 
+#pragma unmanaged
+
+typedef void (__stdcall *DIALOG_DRAW)();
+typedef void (__stdcall *DIALOG_UPDATE)(int x, int y);
+typedef void (__stdcall *DIALOG_PROCESS)(UINT controlID, UINT uiMsg, WPARAM wParam, LPARAM lParam);
+
+class Dialog : public CTDialog {
+public:
+	virtual void Draw();
+	virtual void Update(POINT ptMouse);
+	virtual unsigned int Process(UINT uiMsg, WPARAM wParam, LPARAM lParam);
+	
+public:
+	DIALOG_DRAW mDrawCallback;
+	DIALOG_UPDATE mUpdateCallback;
+	DIALOG_PROCESS mProcessCallback;
+
+	void* mDrawHandle;
+	void* mUpdateHandle;
+	void* mProcessHandle;
+};
+
 #pragma managed
 using namespace System;
+using namespace System::Runtime::InteropServices;
+using namespace SharpAPI::Internal;
 
-static IntPtr NewDialog(bool external){
-	CTDialog* dialog = new CTDialog();
+static IntPtr NewDialog(UI::Dialog::DrawCallback^ drawCallback, UI::Dialog::UpdateCallback^ updateCallback, UI::Dialog::ProcessCallback^ processCallback, bool external){
+	Dialog* dialog = new Dialog();
 	if(external) CExternalUILobby::mDialogs.push_back(dialog);
+
+	dialog->mDrawHandle = GCHandle::ToIntPtr(GCHandle::Alloc(drawCallback)).ToPointer();
+	dialog->mUpdateHandle = GCHandle::ToIntPtr(GCHandle::Alloc(updateCallback)).ToPointer();
+	dialog->mProcessHandle = GCHandle::ToIntPtr(GCHandle::Alloc(processCallback)).ToPointer();
+
+	dialog->mDrawCallback = (DIALOG_DRAW)Marshal::GetFunctionPointerForDelegate(drawCallback).ToPointer();
+	dialog->mUpdateCallback = (DIALOG_UPDATE)Marshal::GetFunctionPointerForDelegate(updateCallback).ToPointer();
+	dialog->mProcessCallback = (DIALOG_PROCESS)Marshal::GetFunctionPointerForDelegate(processCallback).ToPointer();
+
 	return (IntPtr)(void*)dialog;
+}
+
+static void FreeDialog(IntPtr dialogHandle, bool external){
+	Dialog* dialog = (Dialog*)dialogHandle.ToPointer();
+	CExternalUILobby::RemoveDialog(dialog);
+
+	((GCHandle)(IntPtr)dialog->mDrawHandle).Free();
+	((GCHandle)(IntPtr)dialog->mUpdateHandle).Free();
+	((GCHandle)(IntPtr)dialog->mProcessHandle).Free();
+	
+	delete dialog;
+	GC::Collect();	
 }
 
 static bool Create(IntPtr dialog, String^ name){ return ((CTDialog*)dialog.ToPointer())->Create(Interop::mMarshalContext->marshal_as<const char*>(name)); }
 static bool CreateEmpty(IntPtr dialog, int x, int y, int width, int height){ return ((CTDialog*)dialog.ToPointer())->Create(x, y, width, height); }
-static int GetControlID(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->GetControlID(); }
-static void SetControlID(IntPtr dialog, int id){ ((CTDialog*)dialog.ToPointer())->SetControlID(id); }
-static int GetWidth(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->GetWidth(); }
-static void SetWidth(IntPtr dialog, int width){ ((CTDialog*)dialog.ToPointer())->SetWidth(width); }
-static int GetHeight(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->GetHeight(); }
-static void SetHeight(IntPtr dialog, int height){ ((CTDialog*)dialog.ToPointer())->SetHeight(height); }
-static void Show(IntPtr dialog){ ((CTDialog*)dialog.ToPointer())->Show(); }
-static void Hide(IntPtr dialog){ ((CTDialog*)dialog.ToPointer())->Hide(); }
 
 #endif

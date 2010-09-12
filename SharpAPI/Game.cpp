@@ -49,14 +49,14 @@ bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 		case WM_SYSKEYDOWN:
 		case WM_KEYDOWN:
 			{
-				Game::RaiseKeyDownEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000, GetAsyncKeyState(VK_MENU) & 0x8000, GetAsyncKeyState(VK_SHIFT) & 0x8000);
+				Game::RaiseKeyDownEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000 ? true : false, GetAsyncKeyState(VK_MENU) & 0x8000 ? true : false, GetAsyncKeyState(VK_SHIFT) & 0x8000 ? true : false);
 				return handled;
 			}
 			break;
 		case WM_SYSKEYUP:
 		case WM_KEYUP:
 			{
-				Game::RaiseKeyUpEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000, GetAsyncKeyState(VK_MENU) & 0x8000, GetAsyncKeyState(VK_SHIFT) & 0x8000);
+				Game::RaiseKeyUpEvent(wParam & 0xFF, handled, GetAsyncKeyState(VK_CONTROL) & 0x8000 ? true : false, GetAsyncKeyState(VK_MENU) & 0x8000 ? true : false, GetAsyncKeyState(VK_SHIFT) & 0x8000 ? true : false);
 				return handled;
 			}
 			break;

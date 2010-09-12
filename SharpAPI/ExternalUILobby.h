@@ -21,7 +21,8 @@
 #define EXTERNALUILOBBY_H
 
 #include "Templates.h"
-#include <list>
+#include <vector>
+#include <algorithm>
 #include <TDialog.h>
 
 using namespace std;
@@ -37,8 +38,12 @@ public:
 		return reinterpret_cast<CExternalUILobby*>(0x00697FE4);
 	}
 
+	static void RemoveDialog(CTDialog* dialog){
+		mDialogs.erase(remove(mDialogs.begin(), mDialogs.end(), dialog), mDialogs.end());
+	}
+	
 public:
-	static list<CTDialog*> mDialogs;
+	static vector<CTDialog*> mDialogs;
 };
 
 #endif

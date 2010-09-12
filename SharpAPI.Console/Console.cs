@@ -24,6 +24,7 @@ using SharpAPI.Engine;
 using SharpAPI.Engine.Events;
 using SharpAPI.Plugin;
 using SharpAPI.Plugin.Attributes;
+using Font = SharpAPI.Engine.Font;
 
 namespace SharpAPI
 {

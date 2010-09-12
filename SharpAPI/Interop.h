@@ -21,12 +21,16 @@
 #define INTEROP_H
 
 #pragma managed
+#pragma warning(push)
+#pragma warning(disable:4677)
 #include <msclr\marshal.h>
 using namespace msclr::interop;
+using namespace System::Drawing;
 
 public ref class Interop {
 public:
 	static marshal_context^ mMarshalContext;
 };
 
+#pragma warning(pop)
 #endif

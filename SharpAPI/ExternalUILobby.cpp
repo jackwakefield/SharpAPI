@@ -20,7 +20,7 @@
 #include "ExternalUILobby.h"
 #include "main.h"
 
-list<CTDialog*> CExternalUILobby::mDialogs;
+vector<CTDialog*> CExternalUILobby::mDialogs;
 
 #pragma managed
 

@@ -20,23 +20,41 @@
 #include "Dialog.h"
 #include "main.h"
 
+#pragma unmanaged
+
+void Dialog::Draw(){
+	if(!IsVision())	return;
+	CTDialog::Draw();
+
+	mDrawCallback();
+}
+
+void Dialog::Update(POINT ptMouse){
+	if(!IsVision())	return;
+	CTDialog::Update(ptMouse);
+
+	mUpdateCallback(ptMouse.x, ptMouse.y);
+}
+
+unsigned int Dialog::Process(UINT uiMsg, WPARAM wParam, LPARAM lParam){
+	if(!IsVision())	return 0;
+
+	unsigned int controlID = CTDialog::Process(uiMsg, wParam, lParam);
+	mProcessCallback(controlID, uiMsg, wParam, lParam);
+
+	return controlID;
+}
+
 #pragma managed
 using namespace System;
 using namespace System::Runtime::InteropServices;
-using namespace SharpAPI::Internal::UI;
+using namespace SharpAPI::Internal;
 
 void __stdcall DelegateDialogMethods(){
-	Dialog::New = gcnew Dialog::NewDelegate(NewDialog);
-	Dialog::Create = gcnew Dialog::CreateDelegate(Create);
-	Dialog::CreateEmpty = gcnew Dialog::CreateEmptyDelegate(CreateEmpty);
-	Dialog::GetControlID = gcnew Dialog::GetControlIDDelegate(GetControlID);
-	Dialog::SetControlID = gcnew Dialog::SetControlIDDelegate(SetControlID);
-	Dialog::GetWidth = gcnew Dialog::GetWidthDelegate(GetWidth);
-	Dialog::SetWidth = gcnew Dialog::SetWidthDelegate(SetWidth);
-	Dialog::GetHeight = gcnew Dialog::GetHeightDelegate(GetHeight);
-	Dialog::SetHeight = gcnew Dialog::SetHeightDelegate(SetHeight);
-	Dialog::Show = gcnew Dialog::ShowDelegate(Show);
-	Dialog::Hide = gcnew Dialog::HideDelegate(Hide);
+	UI::Dialog::New = gcnew UI::Dialog::NewDelegate(NewDialog);
+	UI::Dialog::Free = gcnew UI::Dialog::FreeDelegate(FreeDialog);
+	UI::Dialog::Create = gcnew UI::Dialog::CreateDelegate(Create);
+	UI::Dialog::CreateEmpty = gcnew UI::Dialog::CreateEmptyDelegate(CreateEmpty);
 }
 
 RunOnLoad(DelegateDialogMethods);

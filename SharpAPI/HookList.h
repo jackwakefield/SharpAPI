@@ -21,7 +21,7 @@
 // Created by ExJam
 #ifndef RunOnLoad
 
-#include <list>
+#include <vector>
 #include "Code.h"
 #include "Console.h"
 
@@ -58,7 +58,7 @@ public:
 		char* mName;
 	};
 
-	list<RunFunc> mFunctions;
+	vector<RunFunc> mFunctions;
 };
 
 class HookList {
@@ -95,7 +95,7 @@ public:
 		}
 	}
 
-	list<Hook*> mHooks;
+	vector<Hook*> mHooks;
 };
 
 class WriteList {
@@ -130,7 +130,7 @@ public:
 		}
 	}
 
-	list<Write*> mWrites;
+	vector<Write*> mWrites;
 };
 
 #define RunOnLoad(FuncName) \

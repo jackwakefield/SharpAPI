@@ -23,28 +23,18 @@ namespace SharpAPI.Internal.UI
 {
     internal static class Dialog
     {
-        internal delegate IntPtr NewDelegate(bool external);
+        internal delegate void DrawCallback();
+        internal delegate void UpdateCallback(int x, int y);
+        internal delegate void ProcessCallback(int controlID, int message, int wParameter, int lParameter);
+
+        internal delegate IntPtr NewDelegate(DrawCallback drawCallback, UpdateCallback updateDelegate, ProcessCallback processCallback, bool external);
+        internal delegate void FreeDelegate(IntPtr dialog, bool external);
         internal delegate bool CreateDelegate(IntPtr dialog, string name);
         internal delegate bool CreateEmptyDelegate(IntPtr dialog, int x, int y, int width, int height);
-        internal delegate int GetControlIDDelegate(IntPtr dialog);
-        internal delegate void SetControlIDDelegate(IntPtr dialog, int id);
-        internal delegate int GetWidthDelegate(IntPtr dialog);
-        internal delegate void SetWidthDelegate(IntPtr dialog, int width);
-        internal delegate int GetHeightDelegate(IntPtr dialog);
-        internal delegate void SetHeightDelegate(IntPtr dialog, int height);
-        internal delegate void ShowDelegate(IntPtr dialog);
-        internal delegate void HideDelegate(IntPtr dialog);
-
+        
         internal static NewDelegate New;
+        internal static FreeDelegate Free;
         internal static CreateDelegate Create;
         internal static CreateEmptyDelegate CreateEmpty;
-        internal static GetControlIDDelegate GetControlID;
-        internal static SetControlIDDelegate SetControlID;
-        internal static GetWidthDelegate GetWidth;
-        internal static SetWidthDelegate SetWidth;
-        internal static GetHeightDelegate GetHeight;
-        internal static SetHeightDelegate SetHeight;
-        internal static ShowDelegate Show;
-        internal static HideDelegate Hide;
     }
 }
