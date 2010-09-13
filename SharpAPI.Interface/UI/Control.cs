@@ -23,42 +23,6 @@ using InternalControl = SharpAPI.Internal.UI.Control;
 
 namespace SharpAPI.UI
 {
-    #region Enumerations
-
-    /// <summary>
-    /// The control type.
-    /// </summary>
-    public enum ControlType
-    {
-        Image = 0x0100,
-        Button = 0x0200,
-        EditBox = 0x0300,
-        ListBox = 0x0400,
-        ScrollBar = 0x0500,
-        ComboBox = 0x0600,
-        Dialog = 0x0700,
-        Static = 0x0800,
-        ScrollBox = 0x0900,
-        Caption = 0x0A00,
-        RadioBox = 0x0B00,
-        RadioButton = 0x0C00,
-        MessageBox = 0x0D00,
-        PushButton = 0x0E00,
-        Tree = 0x0F00,
-        Guage = 0x1000,
-        JComboBox = 0x1100,
-        JListBox = 0x1200,
-        TabbedPane = 0x1300,
-        StatusBar = 0x1400,
-        ZListBox = 0x1500,
-        CheckBox = 0x1600,
-        Pane = 0x1700,
-        Slot = 0x1800,
-        Table = 0x1900
-    }
-
-    #endregion
-
     public class Control
     {
         #region Variables

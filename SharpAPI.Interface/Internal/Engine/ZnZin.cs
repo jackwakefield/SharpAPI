@@ -34,6 +34,7 @@ namespace SharpAPI.Internal.Engine
         internal delegate int getFontHeightDelegate(IntPtr font);
         internal delegate int getScreenWidthDelegate();
         internal delegate int getScreenHeightDelegate();
+        internal delegate int setTransformSpriteDelegate(float[] matrix);
         
         internal static loadTextureDelegate loadTexture;
         internal static unloadTextureDelegate unloadTexture;
@@ -45,5 +46,6 @@ namespace SharpAPI.Internal.Engine
         internal static getFontHeightDelegate getFontHeight;
         internal static getScreenWidthDelegate getScreenWidth;
         internal static getScreenHeightDelegate getScreenHeight;
+        internal static setTransformSpriteDelegate setTransformSprite;
     }
 }

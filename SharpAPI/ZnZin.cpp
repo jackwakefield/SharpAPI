@@ -36,6 +36,7 @@ void __stdcall DelegateZnZinMethods(){
 	ZnZin::getFontHeight = (ZnZin::getFontHeightDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getFontHeight"), ZnZin::getFontHeightDelegate::typeid);
 	ZnZin::getScreenWidth = (ZnZin::getScreenWidthDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getScreenWidth"), ZnZin::getScreenWidthDelegate::typeid);
 	ZnZin::getScreenHeight = (ZnZin::getScreenHeightDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "getScreenHeight"), ZnZin::getScreenHeightDelegate::typeid);
+	ZnZin::setTransformSprite = (ZnZin::setTransformSpriteDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "setTransformSprite"), ZnZin::setTransformSpriteDelegate::typeid);
 }
 
 RunOnLoad(DelegateZnZinMethods);

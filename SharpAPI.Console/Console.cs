@@ -18,13 +18,13 @@
  */
 
 using System;
-using System.Drawing;
 using System.Drawing.Imaging;
 using SharpAPI.Engine;
 using SharpAPI.Engine.Events;
 using SharpAPI.Plugin;
 using SharpAPI.Plugin.Attributes;
-using Font = SharpAPI.Engine.Font;
+using Bitmap = System.Drawing.Bitmap;
+using Color = System.Drawing.Color;
 
 namespace SharpAPI
 {
@@ -69,6 +69,7 @@ namespace SharpAPI
             pythonConsole.Execute("from SharpAPI.ROSE import *");
             pythonConsole.Execute("from SharpAPI.Engine import *");
             pythonConsole.Execute("from SharpAPI.UI import *");
+            pythonConsole.Execute("from SharpAPI.Math import *");
         }
 
         #endregion

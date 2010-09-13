@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,4 +17,25 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "PluginDialog.h"
+using System;
+
+namespace SharpAPI.Engine
+{
+    /// <summary>
+    /// Direct3D sprite flags.
+    /// </summary>
+    [Flags]
+    internal enum SpriteFlags
+    {
+        None = 0,
+        DoNotSaveState = (1 << 0),
+        DoNotModifyRenderState = (1 << 1),
+        ObjectSpace = (1 << 2),
+        Billboard = (1 << 3),
+        AlphaBlend = (1 << 4),
+        SortTexture = (1 << 5),
+        SortDepthFrontToBack = (1 << 6),
+        SortDepthBackToFront = (1 << 7),
+        DoNotAddRefTexture = (1 << 8),
+    }
+}

@@ -19,14 +19,14 @@
 
 using System;
 using System.Collections.Generic;
-using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using IronPython.Hosting;
 using Microsoft.Scripting.Hosting;
 using SharpAPI.Engine;
 using SharpAPI.Plugin;
-using Font = SharpAPI.Engine.Font;
+using Bitmap = System.Drawing.Bitmap;
+using Color = System.Drawing.Color;
 
 namespace SharpAPI
 {

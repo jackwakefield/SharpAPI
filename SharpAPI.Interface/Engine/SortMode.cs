@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,4 +17,16 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "PluginDialog.h"
+namespace SharpAPI.Engine
+{
+    /// <summary>
+    /// Determines the method of sorting.
+    /// </summary>
+    public enum SortMode
+    {
+        None = SpriteFlags.None,
+        Sort = SpriteFlags.SortTexture,
+        FrontToBack = SpriteFlags.SortTexture,
+        BackToFront = SpriteFlags.SortTexture
+    }
+}

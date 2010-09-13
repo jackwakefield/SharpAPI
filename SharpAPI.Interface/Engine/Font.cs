@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  This file is a part of SharpAPI.
  *
  *  Copyright (C) 2010 Jack Wakefield
@@ -17,4 +17,26 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "PluginDialog.h"
+namespace SharpAPI.Engine
+{
+    /// <summary>
+    /// Pre-declared System fonts.
+    /// </summary>
+    public enum Font
+    {
+        Normal,
+        Large,
+        Small,
+        NormalBold,
+        LargeBold,
+        SmallBold,
+        Title,
+        Description,
+        NormalOutline,
+        Outline18Bold,
+        Outline14Bold,
+        Outline24Bold,
+        Outline16Bold,
+        Outline11Bold
+    }
+}

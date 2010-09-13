@@ -17,7 +17,6 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-using System.Windows.Forms;
 using SharpAPI.Internal.Native;
 
 namespace SharpAPI.ROSE.Events
