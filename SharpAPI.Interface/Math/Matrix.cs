@@ -72,33 +72,6 @@ namespace SharpAPI.Math
 
         #endregion
 
-        #region Constructor
-
-        /// <summary>
-        /// Initializes a new instance of the <see cref="Matrix"/> struct.
-        /// </summary>
-        private Matrix()
-        {
-            M11 = 1.0f;
-            M12 = 0.0f;
-            M13 = 0.0f;
-            M14 = 0.0f;
-            M21 = 0.0f;
-            M22 = 1.0f;
-            M23 = 0.0f;
-            M24 = 0.0f;
-            M31 = 0.0f;
-            M32 = 0.0f;
-            M33 = 1.0f;
-            M34 = 0.0f;
-            M41 = 0.0f;
-            M42 = 0.0f;
-            M43 = 0.0f;
-            M44 = 1.0f;
-        }
-
-        #endregion
-
         /// <summary>
         /// Creates a translated matrix based on the specified values.
         /// </summary>

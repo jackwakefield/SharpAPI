@@ -103,16 +103,6 @@ namespace SharpAPI
         #region Events
 
         /// <summary>
-        /// Passes the command if enter has been pressed.
-        /// </summary>
-        /// <param name="sender">The sender.</param>
-        /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void Execute(object sender, EventArgs e)
-        {
-            pythonConsole.Execute(textInputHandler.Text);
-        }
-
-        /// <summary>
         /// Decreases idention if backspace has been pressed.
         /// </summary>
         /// <param name="sender">The sender.</param>

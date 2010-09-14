@@ -19,21 +19,33 @@
 
 using System;
 using System.Drawing;
+using System.Runtime.InteropServices;
 
 namespace SharpAPI.Internal.Engine
 {
     internal static class ZnZin
     {
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate IntPtr loadTextureDelegate(string textureName, string textureFileName, int mipLevels, int useFilter);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int unloadTextureDelegate(IntPtr texture);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int drawSpriteDelegate(IntPtr texture, int[] rectangle, float[] center, float[] position, uint color);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int beginSpriteDelegate(int flag);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int endSpriteDelegate();
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int drawFontDelegate(IntPtr font, int useSprite, int x, int y, uint colour, string text);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate Size getFontTextExtentDelegate(IntPtr font, string text);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int getFontHeightDelegate(IntPtr font);
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int getScreenWidthDelegate();
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int getScreenHeightDelegate();
+        [UnmanagedFunctionPointer(CallingConvention.Cdecl)]
         internal delegate int setTransformSpriteDelegate(float[] matrix);
         
         internal static loadTextureDelegate loadTexture;
