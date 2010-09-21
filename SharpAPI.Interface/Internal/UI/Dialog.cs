@@ -19,10 +19,8 @@
 
 using System;
 
-namespace SharpAPI.Internal.UI
-{
-    internal static class Dialog
-    {
+namespace SharpAPI.Internal.UI {
+    internal static class Dialog {
         internal delegate void DrawCallback();
         internal delegate void UpdateCallback(int x, int y);
         internal delegate void ProcessCallback(int controlID, int message, int wParameter, int lParameter);
@@ -31,7 +29,7 @@ namespace SharpAPI.Internal.UI
         internal delegate void FreeDelegate(IntPtr dialog, bool external);
         internal delegate bool CreateDelegate(IntPtr dialog, string name);
         internal delegate bool CreateEmptyDelegate(IntPtr dialog, int x, int y, int width, int height);
-        
+
         internal static NewDelegate New;
         internal static FreeDelegate Free;
         internal static CreateDelegate Create;

@@ -20,10 +20,8 @@
 using System;
 using System.IO;
 
-namespace SharpAPI
-{
-    public class PythonStreamEvent : EventArgs
-    {
+namespace SharpAPI {
+    public class PythonStreamEvent : EventArgs {
         #region Properties
 
         /// <summary>
@@ -40,16 +38,14 @@ namespace SharpAPI
         /// Initializes a new instance of the <see cref="PythonStreamEvent"/> class.
         /// </summary>
         /// <param name="text">The text.</param>
-        public PythonStreamEvent(string text)
-        {
+        public PythonStreamEvent(string text) {
             Text = text;
         }
 
         #endregion
     }
 
-    public class PythonStream : StreamWriter
-    {
+    public class PythonStream : StreamWriter {
         #region Events
 
         /// <summary>
@@ -66,8 +62,7 @@ namespace SharpAPI
         /// </summary>
         /// <param name="stream">The stream.</param>
         public PythonStream(Stream stream)
-            : base(stream)
-        {
+            : base(stream) {
 
         }
 
@@ -82,13 +77,11 @@ namespace SharpAPI
         /// <exception cref="T:System.NotSupportedException">
         /// 	<see cref="P:System.IO.StreamWriter.AutoFlush"/> is true or the <see cref="T:System.IO.StreamWriter"/> buffer is full, and the contents of the buffer cannot be written to the underlying fixed size stream because the <see cref="T:System.IO.StreamWriter"/> is at the end the stream. </exception>
         /// <exception cref="T:System.IO.IOException">An I/O error occurs. </exception>
-        public override void Write(string value)
-        {
+        public override void Write(string value) {
             string[] lines = value.Replace("\r\n", "\n").Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-            for (int i = 0; i < lines.Length; i++)
-            {
-                if (Written != null)
+            for(int i = 0; i < lines.Length; i++) {
+                if(Written != null)
                     Written(this, new PythonStreamEvent(lines[i]));
             }
         }

@@ -27,7 +27,7 @@ bool Plugin::Load(String^ filePath){
 	for(int i = 0; i < assemblyTypes->Length; i++){
 		if(!assemblyTypes[i]->IsClass || assemblyTypes[i]->IsNotPublic)
 			continue;
-		
+
 		array<Type^>^ typeInterfaces = assemblyTypes[i]->GetInterfaces();
 
 		for(int j = 0; j < typeInterfaces->Length; j++){
@@ -71,6 +71,6 @@ void Plugin::Run(){
 		mInstance->Initialize();
 	}catch(...){
 		::Log(MSG_ERROR, "Failed to initialize plugin '%s' (%s)", mAttributes["Name"], Path::GetFileName(mAssembly->Location));
-		MessageBox::Show(String::Format("An error occured while trying to initialize plugin '{0}'", mAttributes["Name"]), "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
+		MessageBox::Show(String::Format("An error occurred while trying to initialize plugin '{0}'", mAttributes["Name"]), "Error", MessageBoxButtons::OK, MessageBoxIcon::Error);
 	}
 }

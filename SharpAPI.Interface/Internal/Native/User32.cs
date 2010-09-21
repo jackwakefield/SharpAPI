@@ -19,10 +19,8 @@
 
 using System.Runtime.InteropServices;
 
-namespace SharpAPI.Internal.Native
-{
-    internal static class User32
-    {
+namespace SharpAPI.Internal.Native {
+    internal static class User32 {
         /// <summary>
         /// Translates the specified virtual-key code and keyboard state to the corresponding character or characters.
         /// The function translates the code using the input language and physical keyboard layout identified by the keyboard layout handle.

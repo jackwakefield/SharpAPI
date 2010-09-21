@@ -17,13 +17,11 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.UI
-{
+namespace SharpAPI.UI {
     /// <summary>
     /// The control type.
     /// </summary>
-    public enum ControlType
-    {
+    public enum ControlType {
         Image = 0x0100,
         Button = 0x0200,
         EditBox = 0x0300,

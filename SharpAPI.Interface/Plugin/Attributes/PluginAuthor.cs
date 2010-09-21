@@ -19,14 +19,12 @@
 
 using System;
 
-namespace SharpAPI.Plugin.Attributes
-{
+namespace SharpAPI.Plugin.Attributes {
     /// <summary>
     /// Used to define the plugin author for classes inheriting IPlugin
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class PluginAuthor : Attribute
-    {
+    public class PluginAuthor : Attribute {
         #region Properties
 
         /// <summary>
@@ -43,8 +41,7 @@ namespace SharpAPI.Plugin.Attributes
         /// Initializes a new instance of the <see cref="PluginAuthor"/> class.
         /// </summary>
         /// <param name="name">The plugin author.</param>
-        public PluginAuthor(string author)
-        {
+        public PluginAuthor(string author) {
             Author = author;
         }
 

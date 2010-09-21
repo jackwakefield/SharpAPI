@@ -20,10 +20,8 @@
 using System;
 using SharpAPI.Internal.Engine;
 
-namespace SharpAPI.Engine
-{
-    public class Texture : IDisposable
-    {
+namespace SharpAPI.Engine {
+    public class Texture : IDisposable {
         #region Variables
 
         private IntPtr handle;
@@ -36,8 +34,7 @@ namespace SharpAPI.Engine
         /// Initializes a new instance of the <see cref="Texture"/> class.
         /// </summary>
         /// <param name="filePath">The file path.</param>
-        public Texture(string filePath)
-        {
+        public Texture(string filePath) {
             handle = ZnZin.loadTexture(filePath, filePath, 1, 0);
         }
 
@@ -45,8 +42,7 @@ namespace SharpAPI.Engine
         /// Initializes a new instance of the <see cref="Texture"/> class.
         /// </summary>
         /// <param name="handle">The handle.</param>
-        internal Texture(IntPtr handle)
-        {
+        internal Texture(IntPtr handle) {
             this.handle = handle;
         }
 
@@ -57,9 +53,8 @@ namespace SharpAPI.Engine
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
-            if (handle != IntPtr.Zero)
+        public void Dispose() {
+            if(handle != IntPtr.Zero)
                 ZnZin.unloadTexture(handle);
         }
 
@@ -71,8 +66,7 @@ namespace SharpAPI.Engine
         /// </summary>
         /// <param name="x">X.</param>
         /// <param name="y">Y.</param>
-        public void Draw(int x, int y)
-        {
+        public void Draw(int x, int y) {
             ZnZin.drawSprite(handle, null, null, new float[] { x, y, 0 }, 0xFFFFFFFF);
         }
 
@@ -85,8 +79,7 @@ namespace SharpAPI.Engine
         /// <param name="y">Y.</param>
         /// <param name="width">Width.</param>
         /// <param name="height">Height.</param>
-        public void Draw(int x, int y, int width, int height)
-        {
+        public void Draw(int x, int y, int width, int height) {
             ZnZin.drawSprite(handle, new int[] { 0, 0, width, height }, null, new float[] { x, y, 0 }, 0xFFFFFFFF);
         }
     }

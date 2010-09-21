@@ -19,17 +19,14 @@
 
 using SharpAPI.ROSE.Events;
 
-namespace SharpAPI.ROSE
-{
-    public static class Game
-    {
+namespace SharpAPI.ROSE {
+    public static class Game {
         #region Events
 
         /// <summary>
         /// Occurs when a key has been pressed.
         /// </summary>
-        public static event KeyboardHandler KeyDown
-        {
+        public static event KeyboardHandler KeyDown {
             add { Internal.ROSE.Game.KeyDown += value; }
             remove { Internal.ROSE.Game.KeyDown -= value; }
         }
@@ -37,8 +34,7 @@ namespace SharpAPI.ROSE
         /// <summary>
         /// Occurs when a key has been released.
         /// </summary>
-        public static event KeyboardHandler KeyUp
-        {
+        public static event KeyboardHandler KeyUp {
             add { Internal.ROSE.Game.KeyUp += value; }
             remove { Internal.ROSE.Game.KeyUp -= value; }
         }

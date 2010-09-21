@@ -20,18 +20,15 @@
 using SharpAPI.Engine.Events;
 using SharpAPI.Internal.Engine;
 
-namespace SharpAPI.Engine
-{
-    public static class Scene
-    {
+namespace SharpAPI.Engine {
+    public static class Scene {
         #region Properties
 
         /// <summary>
         /// Gets the width of the screen.
         /// </summary>
         /// <value>The width of the screen.</value>
-        public static int ScreenWidth
-        {
+        public static int ScreenWidth {
             get { return ZnZin.getScreenWidth(); }
         }
 
@@ -39,8 +36,7 @@ namespace SharpAPI.Engine
         /// Gets the height of the screen.
         /// </summary>
         /// <value>The height of the screen.</value>
-        public static int ScreenHeight
-        {
+        public static int ScreenHeight {
             get { return ZnZin.getScreenHeight(); }
         }
 
@@ -51,8 +47,7 @@ namespace SharpAPI.Engine
         /// <summary>
         /// Occurs when the engine calls renderScene.
         /// </summary>
-        public static event RenderHandler Render
-        {
+        public static event RenderHandler Render {
             add { Internal.Engine.Scene.Render += value; }
             remove { Internal.Engine.Scene.Render -= value; }
         }
@@ -61,8 +56,7 @@ namespace SharpAPI.Engine
         /// Occurs before the engine calls endScene.
         /// Allows rendering on top of the user interface.
         /// </summary>
-        public static event RenderHandler RenderOverlay
-        {
+        public static event RenderHandler RenderOverlay {
             add { Internal.Engine.Scene.RenderOverlay += value; }
             remove { Internal.Engine.Scene.RenderOverlay -= value; }
         }

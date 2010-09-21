@@ -17,13 +17,11 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Engine
-{
+namespace SharpAPI.Engine {
     /// <summary>
     /// Pre-declared System fonts.
     /// </summary>
-    public enum Font
-    {
+    public enum Font {
         Normal,
         Large,
         Small,

@@ -17,13 +17,11 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Engine
-{
+namespace SharpAPI.Engine {
     /// <summary>
     /// Determines the method of sorting.
     /// </summary>
-    public enum SortMode
-    {
+    public enum SortMode {
         None = SpriteFlags.None,
         Sort = SpriteFlags.SortTexture,
         FrontToBack = SpriteFlags.SortTexture,

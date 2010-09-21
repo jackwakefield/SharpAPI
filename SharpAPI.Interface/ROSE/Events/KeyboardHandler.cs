@@ -19,12 +19,10 @@
 
 using SharpAPI.Internal.Native;
 
-namespace SharpAPI.ROSE.Events
-{
+namespace SharpAPI.ROSE.Events {
     public delegate void KeyboardHandler(KeyboardArgs e);
 
-    public class KeyboardArgs
-    {
+    public class KeyboardArgs {
         #region Variables
 
         private char? value;
@@ -43,12 +41,9 @@ namespace SharpAPI.ROSE.Events
         /// Gets or sets the value.
         /// </summary>
         /// <value>The value.</value>
-        public char Value
-        {
-            get
-            {
-                if (value.HasValue)
-                    return value.Value;
+        public char Value {
+            get {
+                if(value.HasValue) return value.Value;
 
                 byte[] keyboardState = new byte[256];
                 User32.GetKeyboardState(keyboardState);
@@ -81,8 +76,7 @@ namespace SharpAPI.ROSE.Events
         /// Initializes a new instance of the <see cref="KeyboardArgs"/> class.
         /// </summary>
         /// <param name="key">The key associated with the keyboard event.</param>
-        public KeyboardArgs(Keys key, bool ctrl, bool alt, bool shift)
-        {
+        public KeyboardArgs(Keys key, bool ctrl, bool alt, bool shift) {
             Key = key;
             Ctrl = ctrl;
             Alt = alt;

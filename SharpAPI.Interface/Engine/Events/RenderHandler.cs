@@ -17,7 +17,6 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Engine.Events
-{
+namespace SharpAPI.Engine.Events {
     public delegate void RenderHandler();
 }

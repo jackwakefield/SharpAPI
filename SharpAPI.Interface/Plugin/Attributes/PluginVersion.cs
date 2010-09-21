@@ -19,14 +19,12 @@
 
 using System;
 
-namespace SharpAPI.Plugin.Attributes
-{
+namespace SharpAPI.Plugin.Attributes {
     /// <summary>
     /// Used to define the plugin version for classes inheriting IPlugin
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class PluginVersion : Attribute
-    {
+    public class PluginVersion : Attribute {
         #region Properties
 
         /// <summary>
@@ -43,8 +41,7 @@ namespace SharpAPI.Plugin.Attributes
         /// Initializes a new instance of the <see cref="PluginVersion"/> class.
         /// </summary>
         /// <param name="version">The plugin version.</param>
-        public PluginVersion(string version)
-        {
+        public PluginVersion(string version) {
             Version = version;
         }
 

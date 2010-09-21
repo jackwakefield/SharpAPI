@@ -21,10 +21,8 @@ using System;
 using System.Drawing;
 using InternalControl = SharpAPI.Internal.UI.Control;
 
-namespace SharpAPI.UI
-{
-    public class Control
-    {
+namespace SharpAPI.UI {
+    public class Control {
         #region Variables
 
         protected IntPtr handle;
@@ -37,8 +35,7 @@ namespace SharpAPI.UI
         /// Gets or sets the control ID.
         /// </summary>
         /// <value>The control ID.</value>
-        public int ControlID
-        {
+        public int ControlID {
             get { return InternalControl.GetControlID(handle); }
             set { InternalControl.SetControlID(handle, value); }
         }
@@ -47,8 +44,7 @@ namespace SharpAPI.UI
         /// Gets or sets the type of the control.
         /// </summary>
         /// <value>The type of the control.</value>
-        public ControlType ControlType
-        {
+        public ControlType ControlType {
             get { return (ControlType)InternalControl.GetControlType(handle); }
             set { InternalControl.SetControlType(handle, (int)value); }
         }
@@ -57,8 +53,7 @@ namespace SharpAPI.UI
         /// Gets or sets the control's parent.
         /// </summary>
         /// <value>The control's parent.</value>
-        public Control Parent
-        {
+        public Control Parent {
             get { return new Control(InternalControl.GetParent(handle)); }
             set { InternalControl.SetParent(handle, value.handle); }
         }
@@ -67,8 +62,7 @@ namespace SharpAPI.UI
         /// Gets or sets the width.
         /// </summary>
         /// <value>The width.</value>
-        public int Width
-        {
+        public int Width {
             get { return InternalControl.GetWidth(handle); }
             set { InternalControl.SetWidth(handle, value); }
         }
@@ -77,8 +71,7 @@ namespace SharpAPI.UI
         /// Gets or sets the height.
         /// </summary>
         /// <value>The height.</value>
-        public int Height
-        {
+        public int Height {
             get { return InternalControl.GetHeight(handle); }
             set { InternalControl.SetHeight(handle, value); }
         }
@@ -87,8 +80,7 @@ namespace SharpAPI.UI
         /// Gets or sets the position.
         /// </summary>
         /// <value>The position.</value>
-        public Point Position
-        {
+        public Point Position {
             get { return InternalControl.GetPosition(handle); }
             set { InternalControl.SetPosition(handle, value); }
         }
@@ -97,8 +89,7 @@ namespace SharpAPI.UI
         /// Gets or sets the offset.
         /// </summary>
         /// <value>The offset.</value>
-        public Point Offset
-        {
+        public Point Offset {
             get { return InternalControl.GetOffset(handle); }
             set { InternalControl.SetOffset(handle, value); }
         }
@@ -109,12 +100,10 @@ namespace SharpAPI.UI
         /// <value>
         /// 	<c>true</c> if this instance is selected; otherwise, <c>false</c>.
         /// </value>
-        public bool IsSelected
-        {
+        public bool IsSelected {
             get { return InternalControl.IsSelected(handle); }
-            set
-            {
-                if (value)
+            set {
+                if(value)
                     InternalControl.SetSelected(handle);
                 else
                     InternalControl.SetDeselected(handle);
@@ -127,8 +116,7 @@ namespace SharpAPI.UI
         /// <value>
         /// 	<c>true</c> if this instance is focused; otherwise, <c>false</c>.
         /// </value>
-        public bool IsFocused
-        {
+        public bool IsFocused {
             get { return InternalControl.IsFocus(handle); }
             set { InternalControl.SetFocus(handle, value); }
         }
@@ -137,8 +125,7 @@ namespace SharpAPI.UI
         /// Gets or sets a value indicating whether this instance is active.
         /// </summary>
         /// <value><c>true</c> if this instance is active; otherwise, <c>false</c>.</value>
-        public bool IsActive
-        {
+        public bool IsActive {
             get { return InternalControl.IsActive(handle); }
             set { InternalControl.SetActive(handle, true); }
         }
@@ -149,8 +136,7 @@ namespace SharpAPI.UI
         /// <value>
         /// 	<c>true</c> if this instance is enabled; otherwise, <c>false</c>.
         /// </value>
-        public bool IsEnabled
-        {
+        public bool IsEnabled {
             get { return InternalControl.IsEnable(handle); }
             set { InternalControl.SetEnable(handle, value); }
         }
@@ -161,8 +147,7 @@ namespace SharpAPI.UI
         /// <value>
         /// 	<c>true</c> if this instance is visible; otherwise, <c>false</c>.
         /// </value>
-        public bool IsVisible
-        {
+        public bool IsVisible {
             get { return InternalControl.IsVision(handle); }
         }
 
@@ -173,8 +158,7 @@ namespace SharpAPI.UI
         /// <summary>
         /// Initializes a new instance of the <see cref="Control"/> class.
         /// </summary>
-        internal Control()
-        {
+        internal Control() {
 
         }
 
@@ -182,8 +166,7 @@ namespace SharpAPI.UI
         /// Initializes a new instance of the <see cref="Control"/> class.
         /// </summary>
         /// <param name="handle">The handle.</param>
-        internal Control(IntPtr handle)
-        {
+        internal Control(IntPtr handle) {
             this.handle = handle;
         }
 
@@ -192,16 +175,14 @@ namespace SharpAPI.UI
         /// <summary>
         /// Shows the control.
         /// </summary>
-        public void Show()
-        {
+        public void Show() {
             InternalControl.Show(handle);
         }
 
         /// <summary>
         /// Hides the control.
         /// </summary>
-        public void Hide()
-        {
+        public void Hide() {
             InternalControl.Hide(handle);
         }
 
@@ -213,8 +194,7 @@ namespace SharpAPI.UI
         /// <returns>
         /// 	<c>true</c> if the specified position is inside the control; otherwise, <c>false</c>.
         /// </returns>
-        public bool IsInside(int x, int y)
-        {
+        public bool IsInside(int x, int y) {
             return InternalControl.IsInside(handle, x, y);
         }
 
@@ -227,10 +207,8 @@ namespace SharpAPI.UI
         /// <returns>
         /// 	<c>true</c> if the specified <see cref="System.Object"/> is equal to this instance; otherwise, <c>false</c>.
         /// </returns>
-        public override bool Equals(object obj)
-        {
-            if (obj == null)
-                return false;
+        public override bool Equals(object obj) {
+            if(obj == null) return false;
 
             return handle == ((Control)obj).handle;
         }
@@ -241,8 +219,7 @@ namespace SharpAPI.UI
         /// <returns>
         /// A hash code for this instance, suitable for use in hashing algorithms and data structures like a hash table. 
         /// </returns>
-        public override int GetHashCode()
-        {
+        public override int GetHashCode() {
             return handle.ToInt32();
         }
 

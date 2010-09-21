@@ -19,14 +19,12 @@
 
 using System;
 
-namespace SharpAPI.Plugin.Attributes
-{
+namespace SharpAPI.Plugin.Attributes {
     /// <summary>
     /// Used to define the plugin description for classes inheriting IPlugin
     /// </summary>
     [AttributeUsage(AttributeTargets.Class)]
-    public class PluginDescription : Attribute
-    {
+    public class PluginDescription : Attribute {
         #region Properties
 
         /// <summary>
@@ -43,8 +41,7 @@ namespace SharpAPI.Plugin.Attributes
         /// Initializes a new instance of the <see cref="PluginDescription"/> class.
         /// </summary>
         /// <param name="name">The plugin description.</param>
-        public PluginDescription(string description)
-        {
+        public PluginDescription(string description) {
             Description = description;
         }
 

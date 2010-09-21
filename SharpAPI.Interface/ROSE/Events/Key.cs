@@ -22,10 +22,8 @@
 // Authors:
 // Peter Bartok pbartok@novell.com
 
-namespace SharpAPI
-{
-    public enum Keys
-    {
+namespace SharpAPI {
+    public enum Keys {
         None = 0x00000000,
         LButton = 0x00000001,
         RButton = 0x00000002,

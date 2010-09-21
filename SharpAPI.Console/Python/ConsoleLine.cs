@@ -18,21 +18,19 @@
  */
 
 using System.Drawing;
-namespace SharpAPI
-{
+
+namespace SharpAPI {
     /// <summary>
     /// Determines the type of console line.
     /// </summary>
-    public enum LineType
-    {
+    public enum LineType {
         Command,
         Print,
         Error,
         Custom
     }
 
-    public class ConsoleLine
-    {
+    public class ConsoleLine {
         #region Properties
 
         /// <summary>
@@ -62,8 +60,7 @@ namespace SharpAPI
         /// </summary>
         /// <param name="text">The text.</param>
         /// <param name="type">The type.</param>
-        public ConsoleLine(string text, LineType type)
-        {
+        public ConsoleLine(string text, LineType type) {
             Text = text;
             Type = type;
         }
@@ -74,8 +71,7 @@ namespace SharpAPI
         /// <param name="text">The text.</param>
         /// <param name="type">The type.</param>
         /// <param name="colour">The colour.</param>
-        public ConsoleLine(string text, LineType type, Color colour)
-        {
+        public ConsoleLine(string text, LineType type, Color colour) {
             Text = text;
             Type = type;
             Colour = colour;

@@ -19,14 +19,12 @@
 
 using System;
 
-namespace SharpAPI.Engine
-{
+namespace SharpAPI.Engine {
     /// <summary>
     /// Direct3D sprite flags.
     /// </summary>
     [Flags]
-    internal enum SpriteFlags
-    {
+    internal enum SpriteFlags {
         None = 0,
         DoNotSaveState = (1 << 0),
         DoNotModifyRenderState = (1 << 1),

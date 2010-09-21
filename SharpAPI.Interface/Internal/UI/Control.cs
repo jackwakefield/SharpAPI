@@ -20,10 +20,8 @@
 using System;
 using System.Drawing;
 
-namespace SharpAPI.Internal.UI
-{
-    internal static class Control
-    {
+namespace SharpAPI.Internal.UI {
+    internal static class Control {
         internal delegate bool IsInsideDelegate(IntPtr dialog, int x, int y);
         internal delegate void SetSelectedDelegate(IntPtr dialog);
         internal delegate void SetDeselectedDelegate(IntPtr dialog);

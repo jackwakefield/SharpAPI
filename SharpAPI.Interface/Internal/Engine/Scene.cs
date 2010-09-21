@@ -19,10 +19,8 @@
 
 using SharpAPI.Engine.Events;
 
-namespace SharpAPI.Internal.Engine
-{
-    internal static class Scene
-    {
+namespace SharpAPI.Internal.Engine {
+    internal static class Scene {
         #region Events
 
         /// <summary>
@@ -43,21 +41,20 @@ namespace SharpAPI.Internal.Engine
         /// <summary>
         /// Raises the render event.
         /// </summary>
-        internal static void RaiseRenderEvent()
-        {
-            if (Render != null)
+        internal static void RaiseRenderEvent() {
+            if(Render != null)
                 Render();
         }
 
         /// <summary>
         /// Raises the render overlay event.
         /// </summary>
-        internal static void RaiseRenderOverlayEvent()
-        {
-            if (RenderOverlay != null)
+        internal static void RaiseRenderOverlayEvent() {
+            if(RenderOverlay != null)
                 RenderOverlay();
         }
 
         #endregion
     }
+
 }

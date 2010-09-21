@@ -26,14 +26,12 @@ using SharpAPI.Plugin.Attributes;
 using Bitmap = System.Drawing.Bitmap;
 using Color = System.Drawing.Color;
 
-namespace SharpAPI
-{
+namespace SharpAPI {
     [PluginName("Console")]
     [PluginDescription("Python based interactive console used for development purposes")]
     [PluginAuthor("xadet")]
     [PluginVersion("1.00")]
-    public class Console : IPlugin
-    {
+    public class Console : IPlugin {
         #region Variables
 
         private Texture backgroundTexture;
@@ -48,8 +46,7 @@ namespace SharpAPI
         /// Gets or sets a value indicating whether this <see cref="Console"/> is enabled.
         /// </summary>
         /// <value><c>true</c> if enabled; otherwise, <c>false</c>.</value>
-        public bool Enabled
-        {
+        public bool Enabled {
             get { return textInputHandler.Enabled; }
             set { textInputHandler.Enabled = value; }
         }
@@ -61,8 +58,7 @@ namespace SharpAPI
         /// <summary>
         /// Initializes a new instance of the <see cref="Console"/> class.
         /// </summary>
-        public Console()
-        {
+        public Console() {
             pythonConsole = new PythonConsole(Font.NormalOutline);
             pythonConsole.Print("# Welcome to the SharpAPI console", Color.DodgerBlue);
             pythonConsole.Print("# This console is Python based and provides as a simplistic proxy to the interface library", Color.DodgerBlue);
@@ -79,16 +75,14 @@ namespace SharpAPI
         /// <summary>
         /// Initializes the plugin.
         /// </summary>
-        public void Initialize()
-        {
+        public void Initialize() {
             textInputHandler = new TextInputHandler();
             textInputHandler.Enter += new EventHandler(Execute);
             textInputHandler.Backspace += new EventHandler(DecreaseIndentation);
             textInputHandler.Up += new EventHandler(PreviousCommand);
             textInputHandler.Down += new EventHandler(NextCommand);
 
-            using (Bitmap backgroundBitmap = new Bitmap(1, 1))
-            {
+            using(Bitmap backgroundBitmap = new Bitmap(1, 1)) {
                 backgroundBitmap.SetPixel(0, 0, Color.FromArgb(175, 0, 0, 0));
                 backgroundBitmap.Save("background.png", ImageFormat.Png);
             }
@@ -107,19 +101,17 @@ namespace SharpAPI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void Execute(object sender, EventArgs e)
-        {
+        private void Execute(object sender, EventArgs e) {
             pythonConsole.Execute(textInputHandler.Text);
         }
 
         /// <summary>
-        /// Decreases idention if backspace has been pressed.
+        /// Decreases identation if backspace has been pressed.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void DecreaseIndentation(object sender, EventArgs e)
-        {
-            if (string.IsNullOrWhiteSpace(textInputHandler.Text))
+        private void DecreaseIndentation(object sender, EventArgs e) {
+            if(string.IsNullOrWhiteSpace(textInputHandler.Text))
                 pythonConsole.DecreaseIndentation(true);
         }
 
@@ -128,11 +120,10 @@ namespace SharpAPI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void PreviousCommand(object sender, EventArgs e)
-        {
+        private void PreviousCommand(object sender, EventArgs e) {
             string command = pythonConsole.PreviousCommand();
 
-            if (command != null)
+            if(command != null)
                 textInputHandler.Text = command;
         }
 
@@ -141,11 +132,10 @@ namespace SharpAPI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void NextCommand(object sender, EventArgs e)
-        {
+        private void NextCommand(object sender, EventArgs e) {
             string command = pythonConsole.NextCommand();
 
-            if (command != null)
+            if(command != null)
                 textInputHandler.Text = command;
         }
 
@@ -154,9 +144,8 @@ namespace SharpAPI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>
-        private void RenderOverlay()
-        {
-            if (!Enabled)
+        private void RenderOverlay() {
+            if(!Enabled)
                 return;
 
             int width = Scene.ScreenWidth;

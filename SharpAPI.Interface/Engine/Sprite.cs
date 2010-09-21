@@ -22,10 +22,8 @@ using SharpAPI.Internal.Engine;
 using SharpAPI.Internal.ROSE;
 using SharpAPI.Math;
 
-namespace SharpAPI.Engine
-{
-    public static class Sprite
-    {
+namespace SharpAPI.Engine {
+    public static class Sprite {
         /// <summary>
         /// Begins sprite mode.
         /// Sprite.Begin must be called before using any sprite related
@@ -33,15 +31,11 @@ namespace SharpAPI.Engine
         /// </summary>
         /// <param name="alphaBlendEnable">if set to <c>true</c> [alpha blend enable].</param>
         /// <param name="sortMode">The sort mode.</param>
-        public static void Begin(bool alphaBlendEnable = false, SortMode sortMode = SortMode.None)
-        {
+        public static void Begin(bool alphaBlendEnable = false, SortMode sortMode = SortMode.None) {
             SpriteFlags spriteFlags = SpriteFlags.None;
 
-            if (alphaBlendEnable)
-                spriteFlags |= SpriteFlags.AlphaBlend;
-
-            if (sortMode != SortMode.None)
-                spriteFlags |= (SpriteFlags)sortMode;
+            if(alphaBlendEnable) spriteFlags |= SpriteFlags.AlphaBlend;
+            if(sortMode != SortMode.None) spriteFlags |= (SpriteFlags)sortMode;
 
             ZnZin.beginSprite((int)spriteFlags);
         }
@@ -51,8 +45,7 @@ namespace SharpAPI.Engine
         /// Sprite.End must be called after using any sprite related
         /// function (such as Texture.Draw or Sprite.DrawText).
         /// </summary>
-        public static void End()
-        {
+        public static void End() {
             ZnZin.endSprite();
         }
 
@@ -65,8 +58,7 @@ namespace SharpAPI.Engine
         /// <param name="x">The x.</param>
         /// <param name="y">The y.</param>
         /// <param name="colour">The colour.</param>
-        public static void DrawText(string text, Font font, int x, int y, Color colour)
-        {
+        public static void DrawText(string text, Font font, int x, int y, Color colour) {
             ZnZin.drawFont(GameData.GetFont((int)font), 1, x, y, (uint)colour.ToArgb(), text);
         }
 
@@ -76,8 +68,7 @@ namespace SharpAPI.Engine
         /// <param name="text">The text.</param>
         /// <param name="font">The font.</param>
         /// <returns></returns>
-        public static int TextWidth(string text, Font font)
-        {
+        public static int TextWidth(string text, Font font) {
             return ZnZin.getFontTextExtent(GameData.GetFont((int)font), text).Width;
         }
 
@@ -86,8 +77,7 @@ namespace SharpAPI.Engine
         /// </summary>
         /// <param name="font">The font.</param>
         /// <returns></returns>
-        public static int FontHeight(Font font)
-        {
+        public static int FontHeight(Font font) {
             return ZnZin.getFontHeight(GameData.GetFont((int)font));
         }
 
@@ -95,8 +85,7 @@ namespace SharpAPI.Engine
         /// Sets the sprite transformation.
         /// </summary>
         /// <param name="matrix">The matrix.</param>
-        public static void Transform(Matrix matrix)
-        {
+        public static void Transform(Matrix matrix) {
             ZnZin.setTransformSprite(matrix.ToArray());
         }
     }

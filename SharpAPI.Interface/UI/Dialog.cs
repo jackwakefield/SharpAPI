@@ -21,10 +21,8 @@ using System;
 using SharpAPI.Internal.ROSE.Interface;
 using InternalDialog = SharpAPI.Internal.UI.Dialog;
 
-namespace SharpAPI.UI
-{
-    public class Dialog : Control, IDisposable
-    {
+namespace SharpAPI.UI {
+    public class Dialog : Control, IDisposable {
         #region Variables
 
         private bool external;
@@ -36,8 +34,7 @@ namespace SharpAPI.UI
         /// <summary>
         /// Initializes a new instance of the <see cref="Dialog"/> class.
         /// </summary>
-        private Dialog(bool external)
-        {
+        private Dialog(bool external) {
             handle = InternalDialog.New(Draw, Update, Process, external);
             this.external = external;
         }
@@ -49,9 +46,8 @@ namespace SharpAPI.UI
         /// <param name="name">The Xml file name.</param>
         /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
         public Dialog(short type, string name, bool external = false)
-            : this(external)
-        {
-            if (!InternalDialog.Create(handle, name))
+            : this(external) {
+            if(!InternalDialog.Create(handle, name))
                 throw new Exception(string.Format("An error occured while creating dialog {0}", name));
 
             IT_MGR.AppendDlg(type, handle, ControlID);
@@ -60,17 +56,16 @@ namespace SharpAPI.UI
         /// <summary>
         /// Initializes a new instance of the <see cref="Dialog"/> class.
         /// </summary>
-        /// <param name="type">The unique dialog indentifier.</param>
+        /// <param name="type">The unique dialog identifier.</param>
         /// <param name="x">The x location.</param>
         /// <param name="y">The y location.</param>
         /// <param name="width">The width.</param>
         /// <param name="height">The height.</param>
         /// <param name="external">if set to <c>true</c> the dialog will only be shown on external game states (login, channel select, character select, etc.).</param>
         public Dialog(short type, int x, int y, int width, int height, bool external = false)
-            : this(external)
-        {
-            if (!InternalDialog.CreateEmpty(handle, x, y, width, height))
-                throw new Exception(string.Format("An error occured while creating the dialog"));
+            : this(external) {
+            if(!InternalDialog.CreateEmpty(handle, x, y, width, height))
+                throw new Exception(string.Format("An error occurred while creating the dialog"));
 
             IT_MGR.AppendDlg(type, handle, ControlID);
         }
@@ -82,8 +77,7 @@ namespace SharpAPI.UI
         /// <summary>
         /// Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
         /// </summary>
-        public void Dispose()
-        {
+        public void Dispose() {
             InternalDialog.Free(handle, external);
         }
 
@@ -93,8 +87,7 @@ namespace SharpAPI.UI
         /// Called when the game draws the dialog.
         /// Override this method with dialog-specific rendering code;
         /// </summary>
-        protected virtual void Draw()
-        {
+        protected virtual void Draw() {
 
         }
 
@@ -104,8 +97,7 @@ namespace SharpAPI.UI
         /// </summary>
         /// <param name="x">The x position.</param>
         /// <param name="y">The y position.</param>
-        protected virtual void Update(int x, int y)
-        {
+        protected virtual void Update(int x, int y) {
 
         }
 
@@ -116,8 +108,7 @@ namespace SharpAPI.UI
         /// <param name="message">The message.</param>
         /// <param name="wParameter">The w parameter.</param>
         /// <param name="lParameter">The l parameter.</param>
-        private void Process(int controlID, int message, int wParameter, int lParameter)
-        {
+        private void Process(int controlID, int message, int wParameter, int lParameter) {
 
         }
     }

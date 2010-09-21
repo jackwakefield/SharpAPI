@@ -28,18 +28,15 @@ using SharpAPI.Plugin;
 using Bitmap = System.Drawing.Bitmap;
 using Color = System.Drawing.Color;
 
-namespace SharpAPI
-{
-    public class PythonConsole
-    {
+namespace SharpAPI {
+    public class PythonConsole {
         #region Properties
 
         /// <summary>
         /// Gets or sets the indentation.
         /// </summary>
         /// <value>The indentation.</value>
-        public int Indentation
-        {
+        public int Indentation {
             get { return definitionIndentation; }
             set { definitionIndentation = value; }
         }
@@ -70,15 +67,13 @@ namespace SharpAPI
         /// <summary>
         /// Initializes a new instance of the <see cref="PythonConsole"/> class.
         /// </summary>
-        public PythonConsole(Font font)
-        {
+        public PythonConsole(Font font) {
             lines = new List<ConsoleLine>();
 
             this.font = font;
             fontHeight = Sprite.FontHeight(font);
 
-            using (Bitmap overlayBitmap = new Bitmap(1, 1))
-            {
+            using(Bitmap overlayBitmap = new Bitmap(1, 1)) {
                 overlayBitmap.SetPixel(0, 0, Color.FromArgb(125, 100, 177, 255));
                 overlayBitmap.Save("overlay.png", ImageFormat.Png);
             }
@@ -111,8 +106,7 @@ namespace SharpAPI
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The event arguments.</param>
-        private void pythonStream_Write(object sender, PythonStreamEvent e)
-        {
+        private void pythonStream_Write(object sender, PythonStreamEvent e) {
             lines.Add(new ConsoleLine(e.Text, LineType.Print));
         }
 
@@ -121,18 +115,16 @@ namespace SharpAPI
         /// <summary>
         /// Decreases the indentation if a type is being defined.
         /// </summary>
-        public void DecreaseIndentation(bool backspace = false)
-        {
-            if (!definingType)
+        public void DecreaseIndentation(bool backspace = false) {
+            if(!definingType)
                 return;
 
             definitionIndentation--;
 
-            if (definitionIndentation == 0)
-            {
+            if(definitionIndentation == 0) {
                 definingType = false;
 
-                if (!backspace)
+                if(!backspace)
                     Execute(definition, false);
 
                 definition = string.Empty;
@@ -143,15 +135,12 @@ namespace SharpAPI
         /// Gets the previous command from the history.
         /// </summary>
         /// <returns></returns>
-        public string PreviousCommand()
-        {
-            if (lines.Count == 0)
+        public string PreviousCommand() {
+            if(lines.Count == 0)
                 return null;
 
-            for (int i = currentCommand - 1; i >= 0; i--)
-            {
-                if (lines[i].Type == LineType.Command)
-                {
+            for(int i = currentCommand - 1; i >= 0; i--) {
+                if(lines[i].Type == LineType.Command) {
                     currentCommand = i;
                     return lines[i].Text.Substring(2);
                 }
@@ -164,12 +153,9 @@ namespace SharpAPI
         /// Gets the next command from the history.
         /// </summary>
         /// <returns></returns>
-        public string NextCommand()
-        {
-            for (int i = currentCommand + 1; i < lines.Count; i++)
-            {
-                if (lines[i].Type == LineType.Command)
-                {
+        public string NextCommand() {
+            for(int i = currentCommand + 1; i < lines.Count; i++) {
+                if(lines[i].Type == LineType.Command) {
                     currentCommand = i;
                     return lines[i].Text.Substring(2);
                 }
@@ -183,15 +169,12 @@ namespace SharpAPI
         /// Executes the specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        public void Execute(string command, bool print = true)
-        {
-            if (print && command.EndsWith(":"))
+        public void Execute(string command, bool print = true) {
+            if(print && command.EndsWith(":"))
                 definingType = true;
 
-            if (definingType)
-            {
-                if (string.IsNullOrWhiteSpace(command))
-                {
+            if(definingType) {
+                if(string.IsNullOrWhiteSpace(command)) {
                     DecreaseIndentation();
                     return;
                 }
@@ -199,8 +182,7 @@ namespace SharpAPI
                 definition += "\r\n";
                 string commandLine = "> ";
 
-                for (int i = 0; i < definitionIndentation; i++)
-                {
+                for(int i = 0; i < definitionIndentation; i++) {
                     definition += "\t";
                     commandLine += "    ";
                 }
@@ -211,26 +193,20 @@ namespace SharpAPI
                 lines.Add(new ConsoleLine(commandLine, LineType.Command));
                 currentCommand = lines.Count;
 
-                if (command.EndsWith(":"))
+                if(command.EndsWith(":"))
                     definitionIndentation++;
-            }
-            else
-            {
-                if (string.IsNullOrWhiteSpace(command))
+            } else {
+                if(string.IsNullOrWhiteSpace(command))
                     return;
 
-                if (print)
-                {
+                if(print) {
                     lines.Add(new ConsoleLine(string.Format("> {0}", command), LineType.Command));
                     currentCommand = lines.Count;
                 }
 
-                try
-                {
+                try {
                     scriptEngine.Execute(command, scriptScope);
-                }
-                catch (Exception ex)
-                {
+                } catch(Exception ex) {
                     lines.Add(new ConsoleLine(string.Format("Error: {0}", ex.Message), LineType.Error));
                 }
             }
@@ -240,8 +216,7 @@ namespace SharpAPI
         /// Prints the specified text to the console window.
         /// </summary>
         /// <param name="text">The text.</param>
-        public void Print(string text, Color colour)
-        {
+        public void Print(string text, Color colour) {
             lines.Add(new ConsoleLine(text, LineType.Custom, colour));
         }
 
@@ -252,18 +227,16 @@ namespace SharpAPI
         /// <param name="cursor">The cursor.</param>
         /// <param name="height">The height.</param>
         /// <param name="selected">if set to <c>true</c> [selected].</param>
-        public void Draw(string text, int cursor, int height, bool selected)
-        {
+        public void Draw(string text, int cursor, int height, bool selected) {
             int y = 5;
             int limit = height / fontHeight - 1;
 
-            for (int i = lines.Count < limit - 1 ? 0 : lines.Count - limit; i < lines.Count; i++)
-            {
+            for(int i = lines.Count < limit - 1 ? 0 : lines.Count - limit; i < lines.Count; i++) {
                 Color colour = Color.FromArgb(255, 236, 236, 236);
 
-                if (lines[i].Type == LineType.Error)
+                if(lines[i].Type == LineType.Error)
                     colour = Color.OrangeRed;
-                else if (lines[i].Type == LineType.Custom)
+                else if(lines[i].Type == LineType.Custom)
                     colour = lines[i].Colour;
 
                 Sprite.DrawText(lines[i].Text, font, 5, y, colour);
@@ -273,11 +246,10 @@ namespace SharpAPI
             int commandStart = 2;
             string commandLine = "> ";
 
-            if (definingType)
-            {
+            if(definingType) {
                 commandLine = "> ";
 
-                for (int i = 0; i < definitionIndentation; i++)
+                for(int i = 0; i < definitionIndentation; i++)
                     commandLine += "    ";
 
                 commandStart = commandLine.Length;
@@ -286,15 +258,12 @@ namespace SharpAPI
             commandLine += text;
             Sprite.DrawText(commandLine, font, 5, y, Color.White);
 
-            if (selected)
-            {
+            if(selected) {
                 int textIndex = commandLine.IndexOf(text);
                 int x = 5 + Sprite.TextWidth(commandLine.Substring(0, textIndex), Font.NormalOutline);
                 int width = Sprite.TextWidth(commandLine.Substring(textIndex, commandLine.Length - textIndex), Font.NormalOutline);
                 overlay.Draw(x, y, width, Sprite.FontHeight(Font.NormalOutline));
-            }
-            else
-            {
+            } else {
                 int cursorPosition = Sprite.TextWidth(commandLine.Substring(0, cursor + commandStart), font);
                 Sprite.DrawText("_", font, 5 + cursorPosition, y + 1, Color.White);
             }

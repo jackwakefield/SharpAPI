@@ -17,10 +17,8 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Math
-{
-    public struct Matrix
-    {
+namespace SharpAPI.Math {
+    public struct Matrix {
         #region Properties
 
         public float M11;
@@ -44,12 +42,9 @@ namespace SharpAPI.Math
         /// An identity matrix.
         /// </summary>
         /// <value>An identity matrix.</value>
-        public static Matrix Identity
-        {
-            get
-            {
-                return new Matrix()
-                {
+        public static Matrix Identity {
+            get {
+                return new Matrix() {
                     M11 = 1.0f,
                     M12 = 0.0f,
                     M13 = 0.0f,
@@ -79,10 +74,8 @@ namespace SharpAPI.Math
         /// <param name="y">The y.</param>
         /// <param name="z">The z.</param>
         /// <returns></returns>
-        public static Matrix Translate(float x, float y, float z = 0.0f)
-        {
-            return new Matrix()
-            {
+        public static Matrix Translate(float x, float y, float z = 0.0f) {
+            return new Matrix() {
                 M11 = 1.0f,
                 M12 = 0.0f,
                 M13 = 0.0f,
@@ -109,10 +102,8 @@ namespace SharpAPI.Math
         /// <param name="y">The y.</param>
         /// <param name="z">The z.</param>
         /// <returns></returns>
-        public static Matrix Scale(float x, float y, float z = 0.0f)
-        {
-            return new Matrix()
-            {
+        public static Matrix Scale(float x, float y, float z = 0.0f) {
+            return new Matrix() {
                 M11 = x,
                 M12 = 0.0f,
                 M13 = 0.0f,
@@ -136,8 +127,7 @@ namespace SharpAPI.Math
         /// Creates a float array from the matrix.
         /// </summary>
         /// <returns></returns>
-        public float[] ToArray()
-        {
+        public float[] ToArray() {
             return new float[]
             {
                 M11, M12, M13, M14,
@@ -153,10 +143,8 @@ namespace SharpAPI.Math
         /// <param name="matrix1">The matrix1.</param>
         /// <param name="matrix2">The matrix2.</param>
         /// <returns>The result of the operator.</returns>
-        public static Matrix operator *(Matrix matrix1, Matrix matrix2)
-        {
-            return new Matrix()
-            {
+        public static Matrix operator *(Matrix matrix1, Matrix matrix2) {
+            return new Matrix() {
                 M11 = (((matrix1.M11 * matrix2.M11) + (matrix1.M12 * matrix2.M21)) + (matrix1.M13 * matrix2.M31)) + (matrix1.M14 * matrix2.M41),
                 M12 = (((matrix1.M11 * matrix2.M12) + (matrix1.M12 * matrix2.M22)) + (matrix1.M13 * matrix2.M32)) + (matrix1.M14 * matrix2.M42),
                 M13 = (((matrix1.M11 * matrix2.M13) + (matrix1.M12 * matrix2.M23)) + (matrix1.M13 * matrix2.M33)) + (matrix1.M14 * matrix2.M43),

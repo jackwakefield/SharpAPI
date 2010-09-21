@@ -17,13 +17,11 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Plugin
-{
+namespace SharpAPI.Plugin {
     /// <summary>
     /// Interface used for managing plugins.
     /// </summary>
-    public interface IPlugin
-    {
+    public interface IPlugin {
         /// <summary>
         /// Initializes the plugin.
         /// </summary>
