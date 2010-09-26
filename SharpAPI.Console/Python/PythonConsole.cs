@@ -125,7 +125,7 @@ namespace SharpAPI {
                 definingType = false;
 
                 if(!backspace)
-                    Execute(definition, false);
+                    Execute(definition, false, true);
 
                 definition = string.Empty;
             }
@@ -169,7 +169,7 @@ namespace SharpAPI {
         /// Executes the specified command.
         /// </summary>
         /// <param name="command">The command.</param>
-        public void Execute(string command, bool print = true) {
+        public void Execute(string command, bool print = true, bool define = false) {
             if(print && command.EndsWith(":"))
                 definingType = true;
 
@@ -198,11 +198,14 @@ namespace SharpAPI {
             } else {
                 string[] commands = command.Replace("\r\n", "\n").Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-                if(commands.Length > 1) {
+                if(commands.Length > 1 && !define) {
                     for(int i = 0; i < commands.Length; i++) {
                         Execute(commands[i]);
                     }
                 } else {
+                    if(string.IsNullOrWhiteSpace(command))
+                        return;
+
                     if(print) {
                         lines.Add(new ConsoleLine(string.Format("> {0}", command), LineType.Command));
                         currentCommand = lines.Count;

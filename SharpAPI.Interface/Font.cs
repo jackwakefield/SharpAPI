@@ -26,7 +26,6 @@ namespace SharpAPI {
     public enum Font {
         Normal,
         Large,
-        [ObsoleteAttribute("This font causes the client to crash unexpectedly")]
         Small,
         NormalBold,
         LargeBold,
@@ -36,7 +35,6 @@ namespace SharpAPI {
         NormalOutline,
         Outline18Bold,
         Outline14Bold,
-        [ObsoleteAttribute("This font causes the client to crash unexpectedly")]
         Outline24Bold,
         Outline16Bold,
         Outline11Bold
