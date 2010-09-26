@@ -37,8 +37,8 @@ static void Show(IntPtr control){ ((CWinCtrl*)control.ToPointer())->Show(); }
 static void Hide(IntPtr control){ ((CWinCtrl*)control.ToPointer())->Hide(); }
 static void SetFocus(IntPtr control, bool focus){ ((CWinCtrl*)control.ToPointer())->SetFocus(focus); }
 static bool IsVision(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->IsVision(); }
-static void SetOffset(IntPtr control, Point point){ tagPOINT tag; tag.x = point.X; tag.y = point.Y; ((CWinCtrl*)control.ToPointer())->SetOffset(tag); }
-static void MoveWindow(IntPtr control, Point point){ tagPOINT tag; tag.x = point.X; tag.y = point.Y; ((CWinCtrl*)control.ToPointer())->MoveWindow(tag); }
+static void SetOffset(IntPtr control, Point point){ POINT tag = { point.X, point.Y }; ((CWinCtrl*)control.ToPointer())->SetOffset(tag); }
+static void MoveWindow(IntPtr control, Point point){ POINT tag = { point.X, point.Y }; ((CWinCtrl*)control.ToPointer())->MoveWindow(tag); }
 static void SetHeight(IntPtr control, int height){ ((CWinCtrl*)control.ToPointer())->SetHeight(height); }
 static void SetWidth(IntPtr control, int width){ ((CWinCtrl*)control.ToPointer())->SetWidth(width); }
 static bool IsActive(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->IsActive(); }
@@ -49,9 +49,9 @@ static bool IsSelected(IntPtr control){ return ((CWinCtrl*)control.ToPointer())-
 static int GetControlID(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->GetControlID(); }
 static int GetControlType(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->GetControlType(); }
 static int GetHeight(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->GetHeight(); }
-static Point GetOffset(IntPtr control){ tagPOINT tag = ((CWinCtrl*)control.ToPointer())->GetOffset(); return Point(tag.x, tag.y); }
+static Point GetOffset(IntPtr control){ POINT tag = ((CWinCtrl*)control.ToPointer())->GetOffset(); return Point(tag.x, tag.y); }
 static IntPtr GetParent(IntPtr control){ return (IntPtr)(void*)((CWinCtrl*)control.ToPointer())->GetParent(); }
-static Point GetPosition(IntPtr control){ tagPOINT tag = ((CWinCtrl*)control.ToPointer())->GetPosition(); return Point(tag.x, tag.y); }
+static Point GetPosition(IntPtr control){ POINT tag = ((CWinCtrl*)control.ToPointer())->GetPosition(); return Point(tag.x, tag.y); }
 static int GetWidth(IntPtr control){ return ((CWinCtrl*)control.ToPointer())->GetWidth(); }
 static void SetActive(IntPtr control, bool active){ ((CWinCtrl*)control.ToPointer())->SetActive(active); }
 static void SetAlphaValue(IntPtr control, unsigned char alpha){ ((CWinCtrl*)control.ToPointer())->SetAlphaValue(alpha); }
@@ -61,7 +61,7 @@ static void SetCtrlStatus(IntPtr control, int status){ ((CWinCtrl*)control.ToPoi
 static void SetEnable(IntPtr control, bool enabled){ ((CWinCtrl*)control.ToPointer())->SetEnable(enabled); }
 static void SetOwnerDraw(IntPtr control, bool ownerDraw){ ((CWinCtrl*)control.ToPointer())->SetOwnerDraw(ownerDraw); }
 static void SetParent(IntPtr control, IntPtr parent){ ((CWinCtrl*)control.ToPointer())->SetParent((CWinCtrl*)parent.ToPointer()); }
-static void SetPosition(IntPtr control, Point point){ tagPOINT tag; tag.x = point.X; tag.y = point.Y; ((CWinCtrl*)control.ToPointer())->SetPosition(tag); }
+static void SetPosition(IntPtr control, Point point){ POINT tag = { point.X, point.Y }; ((CWinCtrl*)control.ToPointer())->SetPosition(tag); }
 static void SetScaleHeight(IntPtr control, float scaleHeight){ ((CWinCtrl*)control.ToPointer())->SetScaleHeight(scaleHeight); }
 static void SetScaleWidth(IntPtr control, float scaleWidth){ ((CWinCtrl*)control.ToPointer())->SetScaleWidth(scaleWidth); }
 

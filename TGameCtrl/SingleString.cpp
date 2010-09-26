@@ -2,12 +2,10 @@
 
 CSinglelineString::CSinglelineString(){ }
 CSinglelineString::~CSinglelineString(){ }
-void CSinglelineString::set_string(const char* msg, const RECT& rect){ }
 void CSinglelineString::set_string(const char* msg, const RECT& rect, int ifont){ }
 void CSinglelineString::set_rect(const RECT& rect){ }
 void CSinglelineString::set_color(DWORD color){ }
 void CSinglelineString::set_format(DWORD format){ }
-void CSinglelineString::set_font(int iFont){ }
 
 const char* CSinglelineString::get_string(){ return 0; }
 const RECT&	CSinglelineString::get_rect(){ return RECT(); }

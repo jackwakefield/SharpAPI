@@ -145,6 +145,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Plugin.cpp" />
     <ClCompile Include="PluginManager.cpp" />
+    <ClCompile Include="SinglelineString.cpp" />
     <ClCompile Include="ZnZin.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +161,7 @@
     <ClInclude Include="IT_MGR.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="PluginDialog.h" />
+    <ClInclude Include="SinglelineString.h" />
     <ClInclude Include="VariableTypes.h" />
     <ClInclude Include="Plugin.h" />
     <ClInclude Include="PluginManager.h" />

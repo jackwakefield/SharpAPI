@@ -76,7 +76,6 @@ static void FreeDialog(IntPtr dialogHandle, bool external){
 	((GCHandle)(IntPtr)dialog->mProcessHandle).Free();
 	
 	delete dialog;
-	GC::Collect();	
 }
 
 static bool Create(IntPtr dialog, String^ name){ return ((CTDialog*)dialog.ToPointer())->Create(Interop::mMarshalContext->marshal_as<const char*>(name)); }

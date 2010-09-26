@@ -196,18 +196,23 @@ namespace SharpAPI {
                 if(command.EndsWith(":"))
                     definitionIndentation++;
             } else {
-                if(string.IsNullOrWhiteSpace(command))
-                    return;
+                string[] commands = command.Replace("\r\n", "\n").Split(new char[] { '\n' }, StringSplitOptions.RemoveEmptyEntries);
 
-                if(print) {
-                    lines.Add(new ConsoleLine(string.Format("> {0}", command), LineType.Command));
-                    currentCommand = lines.Count;
-                }
+                if(commands.Length > 1) {
+                    for(int i = 0; i < commands.Length; i++) {
+                        Execute(commands[i]);
+                    }
+                } else {
+                    if(print) {
+                        lines.Add(new ConsoleLine(string.Format("> {0}", command), LineType.Command));
+                        currentCommand = lines.Count;
+                    }
 
-                try {
-                    scriptEngine.Execute(command, scriptScope);
-                } catch(Exception ex) {
-                    lines.Add(new ConsoleLine(string.Format("Error: {0}", ex.Message), LineType.Error));
+                    try {
+                        scriptEngine.Execute(command, scriptScope);
+                    } catch(Exception ex) {
+                        lines.Add(new ConsoleLine(string.Format("Error: {0}", ex.Message), LineType.Error));
+                    }
                 }
             }
         }

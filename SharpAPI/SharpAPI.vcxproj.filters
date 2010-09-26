@@ -96,6 +96,9 @@
     <ClCompile Include="Control.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
+    <ClCompile Include="SinglelineString.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Console.h">
@@ -150,6 +153,9 @@
       <Filter>Header Files\Plugin</Filter>
     </ClInclude>
     <ClInclude Include="Control.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SinglelineString.h">
       <Filter>Header Files\UI</Filter>
     </ClInclude>
   </ItemGroup>

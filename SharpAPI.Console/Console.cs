@@ -62,6 +62,7 @@ namespace SharpAPI {
             pythonConsole = new PythonConsole(Font.NormalOutline);
             pythonConsole.Print("# Welcome to the SharpAPI console", Color.DodgerBlue);
             pythonConsole.Print("# This console is Python based and provides as a simplistic proxy to the interface library", Color.DodgerBlue);
+            pythonConsole.Execute("from SharpAPI import *");
             pythonConsole.Execute("from SharpAPI.ROSE import *");
             pythonConsole.Execute("from SharpAPI.Engine import *");
             pythonConsole.Execute("from SharpAPI.UI import *");
@@ -106,7 +107,7 @@ namespace SharpAPI {
         }
 
         /// <summary>
-        /// Decreases identation if backspace has been pressed.
+        /// Decreases indentation if backspace has been pressed.
         /// </summary>
         /// <param name="sender">The sender.</param>
         /// <param name="e">The <see cref="System.EventArgs"/> instance containing the event data.</param>

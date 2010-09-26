@@ -104,9 +104,10 @@
     <Reference Include="System.Drawing" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Engine\Font.cs" />
+    <Compile Include="Font.cs" />
     <Compile Include="Engine\SortMode.cs" />
     <Compile Include="Engine\SpriteFlag.cs" />
+    <Compile Include="Internal\UI\SinglelineString.cs" />
     <Compile Include="ROSE\Events\Key.cs" />
     <Compile Include="Engine\Scene.cs" />
     <Compile Include="Engine\Sprite.cs" />
@@ -133,12 +134,14 @@
     <Compile Include="UI\Control.cs" />
     <Compile Include="UI\ControlType.cs" />
     <Compile Include="UI\Dialog.cs" />
+    <Compile Include="FormatStyle.cs" />
+    <Compile Include="UI\SinglelineString.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
-      <UserProperties BuildVersion_StartDate="2010/8/27" BuildVersion_BuildVersioningStyle="None.Increment.None.TimeStamp" BuildVersion_UpdateAssemblyVersion="False" />
+      <UserProperties BuildVersion_UpdateAssemblyVersion="False" BuildVersion_BuildVersioningStyle="None.Increment.None.TimeStamp" BuildVersion_StartDate="2010/8/27" />
     </VisualStudio>
   </ProjectExtensions>
   <PropertyGroup>

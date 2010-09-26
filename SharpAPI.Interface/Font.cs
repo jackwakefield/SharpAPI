@@ -17,13 +17,16 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-namespace SharpAPI.Engine {
+using System;
+
+namespace SharpAPI {
     /// <summary>
     /// Pre-declared System fonts.
     /// </summary>
     public enum Font {
         Normal,
         Large,
+        [ObsoleteAttribute("This font causes the client to crash unexpectedly")]
         Small,
         NormalBold,
         LargeBold,
@@ -33,6 +36,7 @@ namespace SharpAPI.Engine {
         NormalOutline,
         Outline18Bold,
         Outline14Bold,
+        [ObsoleteAttribute("This font causes the client to crash unexpectedly")]
         Outline24Bold,
         Outline16Bold,
         Outline11Bold

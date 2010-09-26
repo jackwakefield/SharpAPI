@@ -13,12 +13,10 @@ class TGAMECTRL_API CSinglelineString {
 public:
 	CSinglelineString();
 	~CSinglelineString();
-	void set_string(const char* msg, const RECT& rect);
 	void set_string(const char* msg, const RECT& rect, int ifont);
 	void set_rect(const RECT& rect);
 	void set_color(DWORD color);
 	void set_format(DWORD format);
-	void set_font(int iFont);
 
 	const char* get_string();
 	const RECT&	get_rect();

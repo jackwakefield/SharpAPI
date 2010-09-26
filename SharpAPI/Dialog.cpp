@@ -18,7 +18,7 @@
  */
 
 #include "Dialog.h"
-#include "main.h"
+#include "HookList.h"
 
 #pragma unmanaged
 
