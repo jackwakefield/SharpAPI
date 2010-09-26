@@ -126,10 +126,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>copy "$(TargetPath)" "$(ROSEDIR)\Plugins"</PostBuildEvent>
+    <PostBuildEvent>IF NOT EXIST "$(ROSEDIR)\Plugins" mkdir "$(ROSEDIR)\Plugins"
+copy "$(TargetPath)" "$(ROSEDIR)\Plugins"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>mkdir "$(ROSEDIR)\Plugins"</PreBuildEvent>
+    <PreBuildEvent>
+    </PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
