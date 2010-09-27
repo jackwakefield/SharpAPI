@@ -17,24 +17,27 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef PLUGINMANAGER_H
-#define PLUGINMANAGER_H
+#ifndef SCRIPT_H
+#define SCRIPT_H
 
-#include "main.h"
+#include "Console.h"
 #pragma managed
-#include "Plugin.h"
-#include "Script.h"
 using namespace System;
-using namespace System::Collections::Generic;
+using namespace IronPython;
+using namespace IronPython::Hosting;
+using namespace Microsoft::Scripting;
+using namespace Microsoft::Scripting::Hosting;
 
-public ref class PluginManager {
+public ref class Script {
 public:
-	static void Add(String^ filePath);
-	static void AddScript(String^ filePath);
+	bool Execute(String^ filePath);
 
 public:
-	static List<Plugin^> mPlugins;
-	static List<Script^> mScripts;
+	static ScriptEngine^ mEngine;
+
+private:
+	ScriptSource^ mScript;
+	ScriptScope^ mScope;
 };
 
 #endif

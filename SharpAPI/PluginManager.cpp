@@ -27,3 +27,11 @@ void PluginManager::Add(String^ filePath){
 		mPlugins.Add(plugin);
 	}
 }
+
+void PluginManager::AddScript(String^ filePath){
+	Script^ script = gcnew Script();
+
+	if(script->Execute(filePath)){
+		mScripts.Add(script);
+	}
+}

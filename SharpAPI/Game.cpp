@@ -29,6 +29,15 @@ void __stdcall ChangeState(int state){
 			{
 				RunList::Instance().RunFunctions();
 
+				Script::mEngine = Python::CreateEngine();
+				Script::mEngine->Runtime->LoadAssembly(IPlugin::typeid->Assembly);
+
+				array<String^>^ scriptFiles = Directory::GetFiles("Plugins", "*.py");
+
+				for(int i = 0; i < scriptFiles->Length; i++){
+					PluginManager::AddScript(scriptFiles[i]);
+				}
+
 				array<String^>^ dllFiles = Directory::GetFiles("Plugins", "*.dll");
 
 				for(int i = 0; i < dllFiles->Length; i++){
