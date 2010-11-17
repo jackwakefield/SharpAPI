@@ -34,7 +34,7 @@ namespace SharpAPI.Engine {
         /// Initializes a new instance of the <see cref="Texture"/> class.
         /// </summary>
         /// <param name="filePath">The file path.</param>
-        public Texture(string filePath) {
+        private Texture(string filePath) {
             handle = ZnZin.loadTexture(filePath, filePath, 1, 0);
         }
 
@@ -81,6 +81,15 @@ namespace SharpAPI.Engine {
         /// <param name="height">Height.</param>
         public void Draw(int x, int y, int width, int height) {
             ZnZin.drawSprite(handle, new int[] { 0, 0, width, height }, null, new float[] { x, y, 0 }, 0xFFFFFFFF);
+        }
+
+        /// <summary>
+        /// Loads the texture from the specified file path.
+        /// </summary>
+        /// <param name="filePath">The file path.</param>
+        /// <returns></returns>
+        public static Texture FromFile(string filePath) {
+            return new Texture(filePath);
         }
     }
 }

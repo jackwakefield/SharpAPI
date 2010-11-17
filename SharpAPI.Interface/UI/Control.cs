@@ -32,6 +32,14 @@ namespace SharpAPI.UI {
         #region Properties
 
         /// <summary>
+        /// Gets the handle of the control.
+        /// </summary>
+        /// <value>The handle.</value>
+        internal IntPtr Handle {
+            get { return handle; }
+        }
+
+        /// <summary>
         /// Gets or sets the control ID.
         /// </summary>
         /// <value>The control ID.</value>
@@ -175,14 +183,14 @@ namespace SharpAPI.UI {
         /// <summary>
         /// Shows the control.
         /// </summary>
-        public void Show() {
+        public virtual void Show() {
             InternalControl.Show(handle);
         }
 
         /// <summary>
         /// Hides the control.
         /// </summary>
-        public void Hide() {
+        public virtual void Hide() {
             InternalControl.Hide(handle);
         }
 

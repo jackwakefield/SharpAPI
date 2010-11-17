@@ -78,7 +78,7 @@ namespace SharpAPI {
                 overlayBitmap.Save("overlay.png", ImageFormat.Png);
             }
 
-            overlay = new Texture("overlay.png");
+            overlay = Texture.FromFile("overlay.png");
 
             ScriptRuntimeSetup runtimeSetup = Python.CreateRuntimeSetup(null);
             runtimeSetup.DebugMode = true;
@@ -239,7 +239,7 @@ namespace SharpAPI {
             int y = 5;
             int limit = height / fontHeight - 1;
 
-            for(int i = lines.Count < limit - 1 ? 0 : lines.Count - limit; i < lines.Count; i++) {
+            for(int i = lines.Count < limit ? 0 : lines.Count - limit; i < lines.Count; i++) {
                 Color colour = Color.FromArgb(255, 236, 236, 236);
 
                 if(lines[i].Type == LineType.Error)

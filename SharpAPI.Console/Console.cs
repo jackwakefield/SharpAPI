@@ -88,7 +88,7 @@ namespace SharpAPI {
                 backgroundBitmap.Save("background.png", ImageFormat.Png);
             }
 
-            backgroundTexture = new Texture("background.png");
+            backgroundTexture = Texture.FromFile("background.png");
 
             Scene.RenderOverlay += new RenderHandler(RenderOverlay);
         }

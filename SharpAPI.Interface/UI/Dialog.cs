@@ -18,6 +18,7 @@
  */
 
 using System;
+using System.Drawing;
 using SharpAPI.Internal.ROSE.Interface;
 using InternalDialog = SharpAPI.Internal.UI.Dialog;
 
@@ -26,6 +27,58 @@ namespace SharpAPI.UI {
         #region Variables
 
         private bool external;
+
+        private bool isModal;
+        private Image image;
+        private int extent;
+
+        #endregion
+
+        #region Properties
+
+        public int DialogType {
+            get { return InternalDialog.GetDialogType(handle); }
+            set { InternalDialog.SetDialogType(handle, value); }
+        }
+
+        public int Extent {
+            get { return extent; }
+            set { InternalDialog.SetExtent(handle, value); }
+        }
+
+        public Caption Caption {
+            get { return (Caption)new Control(InternalDialog.GetCaption(handle)); }
+            set { InternalDialog.SetCaption(handle, value.Handle); }
+        }
+
+        public Rectangle CaptionArea {
+            set { InternalDialog.ChangeCaptionRect(handle, value); }
+        }
+
+        public Image Image {
+            get { return image; }
+            set {
+                image = value;
+                InternalDialog.SetImage(handle, value.Handle);
+            }
+        }
+
+        public int ChildCount {
+            get { return InternalDialog.GetChildCount(handle); }
+        }
+
+        public bool IsModal {
+            get { return isModal; }
+            set {
+                isModal = value;
+
+                if(value) {
+                    InternalDialog.SetModal(handle);
+                } else {
+                    InternalDialog.SetModeless(handle);
+                }
+            }
+        }
 
         #endregion
 
@@ -37,6 +90,7 @@ namespace SharpAPI.UI {
         private Dialog(bool external) {
             handle = InternalDialog.New(Draw, Update, Process, external);
             this.external = external;
+            extent = 1;
         }
 
         /// <summary>
@@ -82,6 +136,46 @@ namespace SharpAPI.UI {
         }
 
         #endregion
+
+        public void Add(Control control) {
+            InternalDialog.Add(handle, control.Handle);
+        }
+
+        public void Remove(Control control) {
+            Remove(control.ControlID);
+        }
+
+        public void Remove(int id) {
+            InternalDialog.Remove(handle, id);
+        }
+
+        public Control Find(int id) {
+            return new Control(InternalDialog.Find(handle, id));
+        }
+
+        public void ShowChild(Control control) {
+            ShowChild(control.ControlID);
+        }
+
+        public void ShowChild(int id) {
+            InternalDialog.ShowChild(handle, id);
+        }
+
+        public void HideChild(Control control) {
+            HideChild(control.ControlID);
+        }
+
+        public void HideChild(int id) {
+            InternalDialog.HideChild(handle, id);
+        }
+
+        public void EnableChild(Control control, bool enabled = true) {
+            EnableChild(control.ControlID, enabled);
+        }
+
+        public void EnableChild(int id, bool enabled = true) {
+            InternalDialog.SetEnableChild(handle, id, enabled);
+        }
 
         /// <summary>
         /// Called when the game draws the dialog.

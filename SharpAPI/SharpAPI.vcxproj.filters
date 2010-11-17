@@ -52,6 +52,12 @@
     <Filter Include="Header Files\ROSE\Interface\External">
       <UniqueIdentifier>{7e051ab4-e329-4eb7-a9d4-d51af19493f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\ROSE\Sound">
+      <UniqueIdentifier>{8817e9c0-871a-4f71-a496-b4ae2d1f0e44}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ROSE\Sound">
+      <UniqueIdentifier>{72c5a21f-f8e8-4442-8673-ccae8032724b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="HookList.h">
@@ -101,6 +107,9 @@
     </ClCompile>
     <ClCompile Include="Script.cpp">
       <Filter>Source Files\Plugin</Filter>
+    </ClCompile>
+    <ClCompile Include="SoundLIST.cpp">
+      <Filter>Source Files\ROSE\Sound</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -163,6 +172,9 @@
     </ClInclude>
     <ClInclude Include="Script.h">
       <Filter>Header Files\Plugin</Filter>
+    </ClInclude>
+    <ClInclude Include="SoundLIST.h">
+      <Filter>Header Files\ROSE\Sound</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

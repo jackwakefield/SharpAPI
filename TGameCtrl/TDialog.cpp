@@ -56,6 +56,3 @@ void CTDialog::SetSoundHideID(int i){}
 void CTDialog::SetStatusBar(CTStatusBar* statusbar){}
 
 bool CTDialog::IsDefaultVisible(){ return false; }
-
-void CTDialog::MoveCtrl2ListEnd(int id){}
-void CTDialog::ProcessLButtonDown(){}

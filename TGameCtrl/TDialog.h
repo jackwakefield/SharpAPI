@@ -77,9 +77,6 @@ public:
 
 	bool IsDefaultVisible();
 
-	void MoveCtrl2ListEnd(int id);
-	void ProcessLButtonDown();
-
 protected:
 	std_list<CWinCtrl*> mListChildren;//0x70
 	std_list<CWinCtrl*> mOwnerDrawChildren;//0x7C

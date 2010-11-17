@@ -113,7 +113,5 @@ static void SetSoundShowID(IntPtr dialog, int id){ ((CTDialog*)dialog.ToPointer(
 static void SetSoundHideID(IntPtr dialog, int id){ ((CTDialog*)dialog.ToPointer())->SetSoundHideID(id); }
 static void SetStatusBar(IntPtr dialog, IntPtr statusBar){ ((CTDialog*)dialog.ToPointer())->SetStatusBar((CTStatusBar*)statusBar.ToPointer()); }
 static bool IsDefaultVisible(IntPtr dialog){ return ((CTDialog*)dialog.ToPointer())->IsDefaultVisible(); }
-static void MoveCtrl2ListEnd(IntPtr dialog, int id){ ((CTDialog*)dialog.ToPointer())->MoveCtrl2ListEnd(id); }
-static void ProcessLButtonDown(IntPtr dialog){ ((CTDialog*)dialog.ToPointer())->ProcessLButtonDown(); }
 
 #endif

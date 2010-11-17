@@ -102,11 +102,13 @@
     <Reference Include="mscorlib" />
     <Reference Include="System.Core" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Font.cs" />
     <Compile Include="Engine\SortMode.cs" />
     <Compile Include="Engine\SpriteFlag.cs" />
+    <Compile Include="Internal\ROSE\SoundLIST.cs" />
     <Compile Include="Internal\UI\SinglelineString.cs" />
     <Compile Include="ROSE\Events\Key.cs" />
     <Compile Include="Engine\Scene.cs" />
@@ -131,10 +133,13 @@
     <Compile Include="Plugin\IPlugin.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ROSE\Game.cs" />
+    <Compile Include="ROSE\SoundEffect.cs" />
+    <Compile Include="UI\Caption.cs" />
     <Compile Include="UI\Control.cs" />
     <Compile Include="UI\ControlType.cs" />
     <Compile Include="UI\Dialog.cs" />
     <Compile Include="FormatStyle.cs" />
+    <Compile Include="UI\Image.cs" />
     <Compile Include="UI\SinglelineString.cs" />
   </ItemGroup>
   <ItemGroup />

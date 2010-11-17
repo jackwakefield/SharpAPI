@@ -56,7 +56,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <TargetName>SharpAPI</TargetName>
-    <OutDir>2</OutDir>
+    <OutDir>$(ROSEDIR)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <OutDir>$(ROSEDIR)\</OutDir>
@@ -147,6 +147,7 @@
     <ClCompile Include="PluginManager.cpp" />
     <ClCompile Include="Script.cpp" />
     <ClCompile Include="SinglelineString.cpp" />
+    <ClCompile Include="SoundLIST.cpp" />
     <ClCompile Include="ZnZin.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +165,7 @@
     <ClInclude Include="PluginDialog.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="SinglelineString.h" />
+    <ClInclude Include="SoundLIST.h" />
     <ClInclude Include="VariableTypes.h" />
     <ClInclude Include="Plugin.h" />
     <ClInclude Include="PluginManager.h" />
