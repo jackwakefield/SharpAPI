@@ -24,7 +24,7 @@
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal::ROSE;
 
-void __stdcall DelegateSoundListMethods(){
+void _stdcall DelegateSoundListMethods(){
 	SoundLIST::GetVolume = gcnew SoundLIST::GetVolumeDelegate(GetVolume);
 	SoundLIST::SetVolume = gcnew SoundLIST::SetVolumeDelegate(SetVolume);
 	SoundLIST::AddSoundFile = gcnew SoundLIST::AddSoundFileDelegate(AddSoundFile);
@@ -32,4 +32,4 @@ void __stdcall DelegateSoundListMethods(){
 	SoundLIST::IDPlaySound = gcnew SoundLIST::IDPlaySoundDelegate(IDPlaySound);
 }
 
-RunOnLoad(DelegateSoundListMethods);
+RunOnLoad(DelegateSoundListMethods)

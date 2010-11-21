@@ -21,6 +21,7 @@
 #define PLUGINMANAGER_H
 
 #include "main.h"
+
 #pragma managed
 #include "Plugin.h"
 #include "Script.h"

@@ -23,7 +23,7 @@
 #pragma managed
 using namespace SharpAPI::Internal::ROSE;
 
-void __stdcall ChangeState(int state){
+void _stdcall ChangeState(int state){
 	switch(state){
 		case GS_TITLE:
 			{
@@ -52,7 +52,7 @@ void __stdcall ChangeState(int state){
 	}
 }
 
-bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
+bool _stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 	static bool handled;
 	switch(uiMsg){
 		case WM_SYSKEYDOWN:
@@ -71,7 +71,6 @@ bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 			break;
 		case WM_CHAR:
 			return handled;
-			break;
 	}
 
 	return false;
@@ -79,8 +78,8 @@ bool __stdcall WndProc(UINT uiMsg, WPARAM wParam, LPARAM lParam){
 
 #pragma unmanaged
 
-__declspec(naked) void HookChangeState(){
-	static int ReturnAddress = 0x0041BC11;
+void _declspec(naked) HookChangeState(){
+	static int JmpReturn = 0x0041BC11;
 	_asm {
 		PUSHAD
 		PUSH EDI
@@ -88,15 +87,15 @@ __declspec(naked) void HookChangeState(){
 		POPAD
 		MOV EAX, DWORD PTR DS:[EDI*0x4+ESI+0x0A2C]
 		TEST EAX, EAX
-		JMP ReturnAddress
-	};
+		JMP JmpReturn
+	}
 }
 
-HookOnLoad(0x0041BC08, HookChangeState, 4);
+HookOnLoad(0x0041BC08, HookChangeState, 4)
 
-__declspec(naked) void HookWndProc(){
-	static int ReturnAddress = 0x004388BB;
-	static int HandledAddress = 0x00438912;
+void _declspec(naked) HookWndProc(){
+	static int JmpReturn = 0x004388BB;
+	static int JmpHandled = 0x00438912;
 	_asm {
 		PUSHAD
 		PUSH EAX
@@ -107,12 +106,12 @@ __declspec(naked) void HookWndProc(){
 		JNE Handled
 		POPAD
 		CALL DWORD PTR DS:[0x0062E6AC]
-		JMP ReturnAddress
+		JMP JmpReturn
 Handled:
 		POPAD
 		ADD ESP, 0x10
-		JMP HandledAddress
-	};
+		JMP JmpHandled
+	}
 }
 
-HookOnLoad(0x004388B5, HookWndProc, 1);
+HookOnLoad(0x004388B5, HookWndProc, 1)

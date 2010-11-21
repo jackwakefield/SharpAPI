@@ -24,8 +24,8 @@
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal::ROSE::Interface;
 
-void __stdcall DelegateExternalUIManagerMethods(){
+void _stdcall DelegateExternalUIManagerMethods(){
 	External::ExternalUIManager::GetEUI = gcnew External::ExternalUIManager::GetEUIDelegate(GetEUI);
 }
 
-RunOnLoad(DelegateExternalUIManagerMethods);
+RunOnLoad(DelegateExternalUIManagerMethods)

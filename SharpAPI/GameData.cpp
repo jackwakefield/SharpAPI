@@ -24,8 +24,8 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal;
 
-void __stdcall DelegateGameDataMethods(){
+void _stdcall DelegateGameDataMethods(){
 	ROSE::GameData::GetFont = gcnew ROSE::GameData::GetFontDelegate(GetFont);
 }
 
-RunOnLoad(DelegateGameDataMethods);
+RunOnLoad(DelegateGameDataMethods)

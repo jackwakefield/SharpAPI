@@ -27,9 +27,9 @@
 
 #pragma unmanaged
 
-typedef void (__stdcall *DIALOG_DRAW)();
-typedef void (__stdcall *DIALOG_UPDATE)(int x, int y);
-typedef void (__stdcall *DIALOG_PROCESS)(UINT controlID, UINT uiMsg, WPARAM wParam, LPARAM lParam);
+typedef void (_stdcall *DIALOG_DRAW)();
+typedef void (_stdcall *DIALOG_UPDATE)(int x, int y);
+typedef void (_stdcall *DIALOG_PROCESS)(UINT controlID, UINT uiMsg, WPARAM wParam, LPARAM lParam);
 
 class Dialog : public CTDialog {
 public:

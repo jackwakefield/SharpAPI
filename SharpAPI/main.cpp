@@ -49,9 +49,7 @@ BOOL APIENTRY DllMain(HMODULE hModule, DWORD dwReason, LPVOID lpReserved){
 			}
 			break;
 		case DLL_PROCESS_DETACH:
-			{
-				ExitThread(gManagedThread);
-			}
+			ExitThread(gManagedThread);
 			break;
 	}
 	

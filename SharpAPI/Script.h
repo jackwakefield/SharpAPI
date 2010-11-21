@@ -21,6 +21,7 @@
 #define SCRIPT_H
 
 #include "Console.h"
+
 #pragma managed
 using namespace System;
 using namespace IronPython;

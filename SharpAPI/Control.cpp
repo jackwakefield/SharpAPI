@@ -25,7 +25,7 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal;
 
-void __stdcall DelegateControlMethods(){
+void _stdcall DelegateControlMethods(){
 	UI::Control::IsInside = gcnew UI::Control::IsInsideDelegate(IsInside);
 	UI::Control::SetSelected = gcnew UI::Control::SetSelectedDelegate(SetSelected);
 	UI::Control::SetDeselected = gcnew UI::Control::SetDeselectedDelegate(SetDeselected);
@@ -62,4 +62,4 @@ void __stdcall DelegateControlMethods(){
 	UI::Control::SetScaleWidth = gcnew UI::Control::SetScaleWidthDelegate(SetScaleWidth);
 }
 
-RunOnLoad(DelegateControlMethods);
+RunOnLoad(DelegateControlMethods)

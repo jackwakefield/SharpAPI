@@ -22,7 +22,7 @@
 #ifndef TEMPLATES_H
 #define TEMPLATES_H
 
-template <typename T, typename RT> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self){
+template <typename T, typename RT> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -33,7 +33,7 @@ template <typename T, typename RT> _declspec(naked) RT __stdcall CallMemberFunct
 	}
 }
 
-template <typename T, typename RT, typename A1> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1){
+template <typename T, typename RT, typename A1> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -44,7 +44,7 @@ template <typename T, typename RT, typename A1> _declspec(naked) RT __stdcall Ca
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2){
+template <typename T, typename RT, typename A1, typename A2> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -55,7 +55,7 @@ template <typename T, typename RT, typename A1, typename A2> _declspec(naked) RT
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3){
+template <typename T, typename RT, typename A1, typename A2, typename A3> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -66,7 +66,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3> _decls
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -77,7 +77,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -88,7 +88,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -99,7 +99,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -110,7 +110,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -121,7 +121,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -132,7 +132,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -143,7 +143,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -154,7 +154,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -165,7 +165,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13> _declspec(naked) RT __stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12, A13 arg13){
+template <typename T, typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12, typename A13> _declspec(naked) RT _stdcall CallMemberFunction(unsigned int func, T* self, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12, A13 arg13){
 	_asm {
 		POP EAX
 		ADD ESP, 0x8
@@ -176,7 +176,7 @@ template <typename T, typename RT, typename A1, typename A2, typename A3, typena
 	}
 }
 
-template <typename RT> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func){
+template <typename RT> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func){
 	_asm {
 		POP EAX
 		POP ECX
@@ -184,7 +184,7 @@ template <typename RT> _declspec(naked) RT __stdcall CallStaticFunction(unsigned
 		JMP ECX
 	}
 }
-template <typename RT, typename A1> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1){
+template <typename RT, typename A1> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1){
 	_asm {
 		POP EAX
 		POP ECX
@@ -192,7 +192,7 @@ template <typename RT, typename A1> _declspec(naked) RT __stdcall CallStaticFunc
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2){
+template <typename RT, typename A1, typename A2> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2){
 	_asm {
 		POP EAX
 		POP ECX
@@ -200,7 +200,7 @@ template <typename RT, typename A1, typename A2> _declspec(naked) RT __stdcall C
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3){
+template <typename RT, typename A1, typename A2, typename A3> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3){
 	_asm {
 		POP EAX
 		POP ECX
@@ -208,7 +208,7 @@ template <typename RT, typename A1, typename A2, typename A3> _declspec(naked) R
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4){
+template <typename RT, typename A1, typename A2, typename A3, typename A4> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4){
 	_asm {
 		POP EAX
 		POP ECX
@@ -216,7 +216,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4> _decl
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5){
 	_asm {
 		POP EAX
 		POP ECX
@@ -224,7 +224,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6){
 	_asm {
 		POP EAX
 		POP ECX
@@ -232,7 +232,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7){
 	_asm {
 		POP EAX
 		POP ECX
@@ -240,7 +240,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8){
 	_asm {
 		POP EAX
 		POP ECX
@@ -248,7 +248,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9){
 	_asm {
 		POP EAX
 		POP ECX
@@ -256,7 +256,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10){
 	_asm {
 		POP EAX
 		POP ECX
@@ -264,7 +264,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11){
 	_asm {
 		POP EAX
 		POP ECX
@@ -272,7 +272,7 @@ template <typename RT, typename A1, typename A2, typename A3, typename A4, typen
 		JMP ECX
 	}
 }
-template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12> _declspec(naked) RT __stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12){
+template <typename RT, typename A1, typename A2, typename A3, typename A4, typename A5, typename A6, typename A7, typename A8, typename A9, typename A10, typename A11, typename A12> _declspec(naked) RT _stdcall CallStaticFunction(unsigned int func, A1 arg1, A2 arg2, A3 arg3, A4 arg4, A5 arg5, A6 arg6, A7 arg7, A8 arg8, A9 arg9, A10 arg10, A11 arg11, A12 arg12){
 	_asm {
 		POP EAX
 		POP ECX

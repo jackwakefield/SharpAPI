@@ -24,7 +24,7 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal::Engine;
 
-void __stdcall DelegateZnZinMethods(){
+void _stdcall DelegateZnZinMethods(){
 	HMODULE znzin = GetModuleHandle("znzin.dll");
 	ZnZin::loadTexture = (ZnZin::loadTextureDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "loadTexture"), ZnZin::loadTextureDelegate::typeid);
 	ZnZin::unloadTexture = (ZnZin::unloadTextureDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "unloadTexture"), ZnZin::unloadTextureDelegate::typeid);
@@ -39,4 +39,4 @@ void __stdcall DelegateZnZinMethods(){
 	ZnZin::setTransformSprite = (ZnZin::setTransformSpriteDelegate^)Marshal::GetDelegateForFunctionPointer((IntPtr)GetProcAddress(znzin, "setTransformSprite"), ZnZin::setTransformSpriteDelegate::typeid);
 }
 
-RunOnLoad(DelegateZnZinMethods);
+RunOnLoad(DelegateZnZinMethods)

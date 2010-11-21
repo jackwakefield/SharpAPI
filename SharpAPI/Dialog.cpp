@@ -50,7 +50,7 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal;
 
-void __stdcall DelegateDialogMethods(){
+void _stdcall DelegateDialogMethods(){
 	UI::Dialog::New = gcnew UI::Dialog::NewDelegate(NewDialog);
 	UI::Dialog::Free = gcnew UI::Dialog::FreeDelegate(FreeDialog);
 	UI::Dialog::Create = gcnew UI::Dialog::CreateDelegate(Create);
@@ -90,4 +90,4 @@ void __stdcall DelegateDialogMethods(){
 	UI::Dialog::IsDefaultVisible = gcnew UI::Dialog::IsDefaultVisibleDelegate(IsDefaultVisible);
 }
 
-RunOnLoad(DelegateDialogMethods);
+RunOnLoad(DelegateDialogMethods)

@@ -24,8 +24,8 @@
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal::ROSE;
 
-void __stdcall DelegateITMGRMethods(){
+void _stdcall DelegateITMGRMethods(){
 	Interface::IT_MGR::AppendDlg = gcnew Interface::IT_MGR::AppendDlgDelegate(AppendDlg);
 }
 
-RunOnLoad(DelegateITMGRMethods);
+RunOnLoad(DelegateITMGRMethods)

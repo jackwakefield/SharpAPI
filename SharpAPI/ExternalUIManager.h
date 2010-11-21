@@ -17,7 +17,7 @@
  *  along with SharpAPI.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef EXTERNALUIMANAGER
+#ifndef EXTERNALUIMANAGER_H
 #define EXTERNALUIMANAGER_H
 
 #pragma unmanaged

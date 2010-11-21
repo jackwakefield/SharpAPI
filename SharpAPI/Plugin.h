@@ -22,6 +22,7 @@
 
 #include "Console.h"
 #include "SharpAPI.h"
+
 #pragma managed
 using namespace System;
 using namespace System::IO;

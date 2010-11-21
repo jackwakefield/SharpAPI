@@ -23,36 +23,36 @@
 using namespace System;
 using namespace SharpAPI::Internal::Engine;
 
-void __stdcall RaiseRenderScene(){
+void _stdcall RaiseRenderScene(){
 	Scene::RaiseRenderEvent();
 }
 
-void __stdcall RaiseRenderOverlay(){
+void _stdcall RaiseRenderOverlay(){
 	Scene::RaiseRenderOverlayEvent();
 }
 
 #pragma unmanaged
 
-__declspec(naked) void HookRenderScene(){
+void _declspec(naked) HookRenderScene(){
 	_asm {
 		PUSHAD
 		CALL RaiseRenderScene
 		POPAD
 		JMP DWORD PTR DS:[EDX+0x214]
-	};
+	}
 }
 
-HookOnLoad(0x680226CD, HookRenderScene, 1);
+HookOnLoad(0x680226CD, HookRenderScene, 1)
 
-__declspec(naked) void HookEndScene(){
-	static int ReturnAddress = 0x68022626;
+void _declspec(naked) HookEndScene(){
+	static int JmpReturn = 0x68022626;
 	_asm {
 		PUSHAD
 		CALL RaiseRenderOverlay
 		POPAD
 		MOV ECX, DWORD PTR DS:[0x6822E630]
-		JMP ReturnAddress
-	};
+		JMP JmpReturn
+	}
 }
 
-HookOnLoad(0x68022620, HookEndScene, 1);
+HookOnLoad(0x68022620, HookEndScene, 1)

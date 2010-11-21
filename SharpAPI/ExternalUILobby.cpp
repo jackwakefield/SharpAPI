@@ -24,26 +24,34 @@ vector<CTDialog*> CExternalUILobby::mDialogs;
 
 #pragma managed
 
-void __stdcall DrawExternalUI(){
-	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog)
-		(*dialog)->Draw();
+void _stdcall DrawExternalUI(){
+	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog){
+		if(*dialog){
+			(*dialog)->Draw(mouse);
+		}
+	}
 }
 
-void __stdcall UpdateExternalUI(POINT mouse){
-	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog)
-		(*dialog)->Update(mouse);
+void _stdcall UpdateExternalUI(POINT mouse){
+	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog){
+		if(*dialog){
+			(*dialog)->Update(mouse);
+		}
+	}
 }
 
-bool __stdcall ProcessExternalUI(unsigned int uiMsg, WPARAM wParam, LPARAM lParam){
+bool _stdcall ProcessExternalUI(unsigned int uiMsg, WPARAM wParam, LPARAM lParam){
 	for(auto dialog = CExternalUILobby::mDialogs.rbegin(); dialog != CExternalUILobby::mDialogs.rend(); ++dialog){
-		if((*dialog)->Process(uiMsg, wParam, lParam)){
-			if(uiMsg == WM_LBUTTONDOWN){
-				CTDialog* dialogItem = *dialog;
-				CExternalUILobby::mDialogs.erase(--dialog.base());
-				CExternalUILobby::mDialogs.push_back(dialogItem);
-			}
+		if(*dialog){
+			if((*dialog)->Process(uiMsg, wParam, lParam)){
+				if(uiMsg == WM_LBUTTONDOWN){
+					CTDialog* dialogItem = *dialog;
+					CExternalUILobby::mDialogs.erase(--dialog.base());
+					CExternalUILobby::mDialogs.push_back(dialogItem);
+				}
 			
-			return true;
+				return true;
+			}
 		}
 	}
 
@@ -52,22 +60,22 @@ bool __stdcall ProcessExternalUI(unsigned int uiMsg, WPARAM wParam, LPARAM lPara
 
 #pragma unmanaged
 
-__declspec(naked) void HookDrawExternalUI(){
-	static int ReturnAddress = 0x0049CE9F;
+void _declspec(naked) HookDrawExternalUI(){
+	static int JmpReturn = 0x0049CE9F;
 	_asm {
 		PUSHAD
 		CALL DrawExternalUI
 		POPAD
 		MOV EAX, DWORD PTR DS:[ESI+0x4]
 		TEST EAX, EAX
-		JMP ReturnAddress
-	};
+		JMP JmpReturn
+	}
 }
 
-HookOnLoad(0x0049CE9A, HookDrawExternalUI, 0);
+HookOnLoad(0x0049CE9A, HookDrawExternalUI, 0)
 
-__declspec(naked) void HookUpdateExternalUI(){
-	static int ReturnAddress = 0x0049CC9D;
+void _declspec(naked) HookUpdateExternalUI(){
+	static int JmpReturn = 0x0049CC9D;
 	_asm {
 		PUSHAD
 		PUSH EBX
@@ -76,15 +84,15 @@ __declspec(naked) void HookUpdateExternalUI(){
 		POPAD
 		MOV ESI, DWORD PTR DS:[ESI]
 		MOV EAX, DWORD PTR DS:[ESI+0x20]
-		JMP ReturnAddress
-	};
+		JMP JmpReturn
+	}
 }
 
-HookOnLoad(0x0049CC98, HookUpdateExternalUI, 0);
+HookOnLoad(0x0049CC98, HookUpdateExternalUI, 0)
 
-__declspec(naked) void HookProcessExternalUI(){
-	static int ReturnAddress = 0x0049CD33;
-	static int SkipAddress = 0x0049CD3C;
+void _declspec(naked) HookProcessExternalUI(){
+	static int JmpReturn = 0x0049CD33;
+	static int JmpSkip = 0x0049CD3C;
 	_asm {
 		PUSHAD
 		PUSH EBX
@@ -96,11 +104,11 @@ __declspec(naked) void HookProcessExternalUI(){
 		POPAD
 		MOV ESI, DWORD PTR DS:[ESI]
 		MOV EDX, DWORD PTR DS:[ESI+0x20]
-		JMP ReturnAddress
+		JMP JmpReturn
 Skip:
 		POPAD
-		JMP SkipAddress
-	};
+		JMP JmpSkip
+	}
 }
 
-HookOnLoad(0x0049CD2E, HookProcessExternalUI, 0);
+HookOnLoad(0x0049CD2E, HookProcessExternalUI, 0)

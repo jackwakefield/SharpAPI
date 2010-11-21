@@ -27,7 +27,7 @@
 
 using namespace std;
 
-typedef void (__stdcall *PF_SVOIDVOID)(void);
+typedef void (_stdcall *PF_SVOIDVOID)(void);
 typedef void (__cdecl *PF_CVOIDVOID)(void);
 
 class RunList {

@@ -25,7 +25,7 @@ using namespace System;
 using namespace System::Runtime::InteropServices;
 using namespace SharpAPI::Internal;
 
-void __stdcall DelegateSinglineStringMethods(){
+void _stdcall DelegateSinglineStringMethods(){
 	UI::SinglelineString::New = gcnew UI::SinglelineString::NewDelegate(NewSinglelineString);
 	UI::SinglelineString::Free = gcnew UI::SinglelineString::FreeDelegate(FreeSinglelineString);
 	UI::SinglelineString::SetString = gcnew UI::SinglelineString::SetStringDelegate(SetString);
@@ -44,4 +44,4 @@ void __stdcall DelegateSinglineStringMethods(){
 	UI::SinglelineString::Clear = gcnew UI::SinglelineString::ClearDelegate(Clear);
 }
 
-RunOnLoad(DelegateSinglineStringMethods);
+RunOnLoad(DelegateSinglineStringMethods)
