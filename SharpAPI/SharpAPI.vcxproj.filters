@@ -96,9 +96,6 @@
     <ClCompile Include="ExternalUILobby.cpp">
       <Filter>Source Files\ROSE\Interface\External</Filter>
     </ClCompile>
-    <ClCompile Include="PluginDialog.cpp">
-      <Filter>Source Files\Plugin</Filter>
-    </ClCompile>
     <ClCompile Include="Control.cpp">
       <Filter>Source Files\UI</Filter>
     </ClCompile>
@@ -160,9 +157,6 @@
     </ClInclude>
     <ClInclude Include="ExternalUIManager.h">
       <Filter>Header Files\ROSE\Interface\External</Filter>
-    </ClInclude>
-    <ClInclude Include="PluginDialog.h">
-      <Filter>Header Files\Plugin</Filter>
     </ClInclude>
     <ClInclude Include="Control.h">
       <Filter>Header Files\UI</Filter>

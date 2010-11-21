@@ -27,7 +27,7 @@ vector<CTDialog*> CExternalUILobby::mDialogs;
 void _stdcall DrawExternalUI(){
 	for(auto dialog = CExternalUILobby::mDialogs.begin(); dialog != CExternalUILobby::mDialogs.end(); ++dialog){
 		if(*dialog){
-			(*dialog)->Draw(mouse);
+			(*dialog)->Draw();
 		}
 	}
 }

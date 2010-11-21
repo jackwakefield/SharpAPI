@@ -139,7 +139,6 @@
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameData.cpp" />
     <ClCompile Include="IT_MGR.cpp" />
-    <ClCompile Include="PluginDialog.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="HookList.h" />
     <ClCompile Include="main.cpp" />
@@ -162,7 +161,6 @@
     <ClInclude Include="Interop.h" />
     <ClInclude Include="IT_MGR.h" />
     <ClInclude Include="main.h" />
-    <ClInclude Include="PluginDialog.h" />
     <ClInclude Include="Script.h" />
     <ClInclude Include="SinglelineString.h" />
     <ClInclude Include="SoundLIST.h" />
